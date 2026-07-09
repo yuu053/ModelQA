@@ -58,7 +58,10 @@ float4 PSMain(VSOutput input) : SV_Target
     if (MQA_HasImageSkyboxPreset(gStyleParams.z))
     {
         const float2 skyUv = MQA_SkyboxImageUV(dir);
-        linearColor = MQA_SRGBToLinear(gSkyboxTexture.SampleLevel(gMaterialSampler, skyUv, 0.0f).rgb) * max(gLightEnv.w, 0.0f) * 1.05f;
+        if (MQA_IsHdriSkyboxPreset(gStyleParams.z))
+            linearColor = max(gSkyboxTexture.SampleLevel(gMaterialSampler, skyUv, 0.0f).rgb, 0.0f) * max(gLightEnv.w, 0.0f);
+        else
+            linearColor = MQA_SRGBToLinear(gSkyboxTexture.SampleLevel(gMaterialSampler, skyUv, 0.0f).rgb) * max(gLightEnv.w, 0.0f) * 1.05f;
     }
     else
     {

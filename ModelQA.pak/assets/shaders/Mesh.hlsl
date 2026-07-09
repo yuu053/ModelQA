@@ -76,10 +76,19 @@ float3 SampleEnv(float3 dir, float roughness)
     float3 c;
     if (MQA_HasImageSkyboxPreset(gStyleParams.z))
     {
-        c = MQA_SRGBToLinear(gSkyboxTexture.SampleLevel(gMaterialSampler, MQA_SkyboxImageUV(dir), 0.0f).rgb);
-        // equirect画像にはmipが無い環境もあるため、粗さが高い材質では輝度寄りへ軽くぼかす。
-        float l = MQA_Luminance(c);
-        c = lerp(c, float3(l, l, l), saturate(roughness) * 0.28f);
+        const float2 uv = MQA_SkyboxImageUV(dir);
+        if (MQA_IsHdriSkyboxPreset(gStyleParams.z))
+        {
+            const float hdrMip = saturate(roughness) * saturate(roughness) * 12.0f;
+            c = max(gSkyboxTexture.SampleLevel(gMaterialSampler, uv, hdrMip).rgb, 0.0f);
+        }
+        else
+        {
+            c = MQA_SRGBToLinear(gSkyboxTexture.SampleLevel(gMaterialSampler, uv, 0.0f).rgb);
+            // equirect画像にはmipが無い環境もあるため、粗さが高い材質では輝度寄りへ軽くぼかす。
+            float l = MQA_Luminance(c);
+            c = lerp(c, float3(l, l, l), saturate(roughness) * 0.28f);
+        }
         return c * max(gLightEnv.w, 0.0f);
     }
     return MQA_SampleProceduralEnvironmentRough(dir, roughness, gStyleParams.z, gLightEnv.xyz, max(gLightEnv.w, 0.0f), max(gLightingModes.x, 0.0f), 0.0f, 1.0f, 1.0f);

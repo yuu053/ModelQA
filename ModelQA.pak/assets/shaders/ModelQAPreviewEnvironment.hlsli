@@ -43,6 +43,12 @@ bool MQA_HasImageSkyboxPreset(float preset)
     return preset >= 100.0f;
 }
 
+bool MQA_IsHdriSkyboxPreset(float preset)
+{
+    // base preset 8 = packaged Ferndale Studio 04 HDRI in ModelQA.mqahdri format.
+    return MQA_HasImageSkyboxPreset(preset) && abs((preset - 100.0f) - 8.0f) < 0.5f;
+}
+
 float MQA_BaseSkyboxPreset(float preset)
 {
     return MQA_HasImageSkyboxPreset(preset) ? (preset - 100.0f) : preset;
