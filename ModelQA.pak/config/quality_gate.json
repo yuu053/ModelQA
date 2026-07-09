@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "product": "ModelQA",
+  "goal": "100% means no remaining Fatal/Error/Warning/Info in the selected category.",
+  "scoreWeights": {
+    "Fatal": 100,
+    "Error": 50,
+    "Warning": 10,
+    "Info": 1
+  },
+  "categories": {
+    "Geometry": {
+      "requiredScore": 100,
+      "fatalIsBlocker": true
+    },
+    "Material": {
+      "requiredScore": 100,
+      "fatalIsBlocker": true
+    },
+    "Texture": {
+      "requiredScore": 100,
+      "fatalIsBlocker": true
+    },
+    "UV": {
+      "requiredScore": 100,
+      "fatalIsBlocker": false
+    },
+    "Skin": {
+      "requiredScore": 100,
+      "fatalIsBlocker": true
+    },
+    "Animation": {
+      "requiredScore": 100,
+      "fatalIsBlocker": true
+    },
+    "Importer": {
+      "requiredScore": 100,
+      "fatalIsBlocker": true
+    }
+  }
+}

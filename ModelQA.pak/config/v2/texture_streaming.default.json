@@ -1,0 +1,41 @@
+{
+  "schema": "modelqa.texture_streaming.v1",
+  "enabled": true,
+  "cacheEnabled": true,
+  "cacheDirectory": "%LOCALAPPDATA%/ModelQA/texture_cache_v2",
+  "preview": {
+    "maxDimension": 4096,
+    "maxMipLevels": 8,
+    "generateMipChain": true
+  },
+  "massiveModel": {
+    "fileSizeThresholdMB": 1024,
+    "previewMaxDimension": 2048,
+    "maxUploadedTextures": 64,
+    "decodeInBackground": true
+  },
+  "notes": [
+    "Step 08 uses WIC decode and .mqtex cache.",
+    "DirectXTex/BC/KTX2 conversion is planned for the next texture optimization stage."
+  ],
+  "version": 2,
+  "step": "08.1",
+  "textureStreamingPlanner": {
+    "totalCpuMB": 256,
+    "totalGpuMB": 256,
+    "perTextureMB": 64,
+    "minPreviewDimension": 256,
+    "defaultPreviewDimension": 1024,
+    "maxPreviewDimension": 2048,
+    "maxCriticalTextures": 64,
+    "maxBackgroundTextures": 256,
+    "preferLowMipFirst": true,
+    "allowSelectedTextureFullResolution": true,
+    "priorityOrder": [
+      "selected material",
+      "visible baseColor/alpha/skybox",
+      "visible normal/metallicRoughness/ao/emissive",
+      "background texture"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "defaultPreset": "normal_only",
+  "presets": {
+    "normal_only": {
+      "solid": true,
+      "wireframe": false,
+      "issueTriangles": false,
+      "issueWire": false,
+      "skeleton": false,
+      "jointsOnly": false
+    },
+    "qa_focus": {
+      "solid": true,
+      "wireframe": false,
+      "issueTriangles": true,
+      "issueWire": true,
+      "skeleton": false,
+      "jointsOnly": false
+    },
+    "animation_debug": {
+      "solid": true,
+      "wireframe": false,
+      "issueTriangles": false,
+      "issueWire": false,
+      "skeleton": true,
+      "jointsOnly": false
+    }
+  }
+}

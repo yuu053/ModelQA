@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "layoutName": "ModelQA Production Layout",
+  "panels": {
+    "left": ["モデル", "マテリアル / テクスチャ", "Issue一覧"],
+    "center": ["ビューポート", "タイムライン"],
+    "centerRight": ["UVビュー", "状態"],
+    "right": ["インスペクター", "アニメーション", "表示設定"]
+  },
+  "initialView": {
+    "showSolid": true,
+    "showIssueFill": false,
+    "showIssueWire": false,
+    "showFullWire": false,
+    "showSkeleton": false
+  }
+}

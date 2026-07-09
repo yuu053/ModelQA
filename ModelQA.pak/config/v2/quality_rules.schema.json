@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ModelQA Quality Rule Profile",
+  "type": "object",
+  "required": [
+    "profileName",
+    "version",
+    "limits",
+    "severityPolicy"
+  ],
+  "properties": {
+    "profileName": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "pc",
+        "console",
+        "mobile",
+        "school",
+        "custom"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "maxFileSizeMB": {
+          "type": "integer"
+        },
+        "maxTrianglesPerModel": {
+          "type": "integer"
+        },
+        "maxVerticesPerModel": {
+          "type": "integer"
+        },
+        "maxTextureSize": {
+          "type": "integer"
+        },
+        "maxTextureMemoryMB": {
+          "type": "integer"
+        },
+        "maxBonesPerSkin": {
+          "type": "integer"
+        },
+        "maxInfluencesPerVertex": {
+          "type": "integer"
+        },
+        "requireMipmaps": {
+          "type": "boolean"
+        },
+        "requireTangentsForNormalMaps": {
+          "type": "boolean"
+        }
+      }
+    },
+    "severityPolicy": {
+      "type": "object",
+      "properties": {
+        "failOn": {
+          "type": "string",
+          "enum": [
+            "fatal",
+            "error",
+            "warning",
+            "info"
+          ]
+        },
+        "infoAffectsScore": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

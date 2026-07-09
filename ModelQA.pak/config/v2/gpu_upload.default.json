@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "gpuUploadQueue": {
+    "enabled": true,
+    "preferCopyQueue": true,
+    "deferTextureUpload": true,
+    "adaptiveTextureResolution": true,
+    "uploadRingSizeMb": 256,
+    "maxTextureUploadsPerFrame": 16,
+    "vramReserveRatio": 0.18,
+    "maxTextureDimension": 1024
+  }
+}
