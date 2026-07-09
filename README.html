@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ModelQAの使い方、できること、画面の見方をまとめたガイド">
+<title>ModelQA 使い方ガイド</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#07111c; --panel:#101d2b; --panel2:#0b1622;
+  --ink:#f4f8ff; --text:#c9d6e4; --muted:#8ea1b5;
+  --line:#2f4b63; --line2:#577894; --accent:#84ccff;
+  --shadow:0 24px 64px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:16px/1.72 system-ui,-apple-system,"Segoe UI","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;background:radial-gradient(circle at 12% 0%,rgba(84,142,200,.18),transparent 28rem),radial-gradient(circle at 88% 6%,rgba(88,110,180,.14),transparent 26rem),linear-gradient(180deg,#070d15 0%,#08111c 52%,#050a11 100%)}
+a{color:#b7e5ff;text-decoration:none}a:hover{text-decoration:underline}
+p{margin:.4rem 0;color:var(--text)}strong{color:#fff}
+.wrap{max-width:1120px;margin:auto;padding:28px 18px 56px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.03em}
+.logo-mark{width:35px;height:35px;border-radius:12px;background:linear-gradient(145deg,#9bdfff,#4f8fd0 60%,#172538);box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 16px 34px rgba(45,120,210,.28)}
+.logo small{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:0}
+.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav a{padding:6px 12px;border:1px solid #314b63;border-radius:999px;background:#0b1724;color:#dce9f8;font-size:13px}
+.hero{display:grid;grid-template-columns:minmax(0,.92fr) minmax(380px,1.08fr);gap:28px;align-items:center;padding:30px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(19,32,47,.96),rgba(8,15,24,.98) 72%);box-shadow:var(--shadow);overflow:hidden}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid #385671;border-radius:999px;background:#102134;color:#e5f1ff;font-size:13px;font-weight:700}
+h1{margin:.78rem 0 .8rem;font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:.01em}.lead{font-size:17px;max-width:45em;color:#dbe7f4}
+.format-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.pill{padding:6px 10px;border:1px solid #314b63;border-radius:999px;background:#0b1723;color:#dce9f8;font-size:13px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.button{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:13px;border:1px solid #4b7191;background:#17314b;color:#fff;font-weight:800}.button.secondary{background:#0d1a28;color:#dbe9f6;border-color:#2d465f}
+.mock-wrap{min-width:0;perspective:1200px;padding:12px 4px}.app-mock{width:100%;max-width:620px;margin:auto;aspect-ratio:16/9;padding:10px;border:1px solid rgba(130,180,220,.42);border-radius:20px;background:linear-gradient(145deg,rgba(14,25,38,.96),rgba(6,12,20,.98));box-shadow:0 20px 44px rgba(0,0,0,.48),0 0 0 1px rgba(255,255,255,.05) inset;transform:rotateX(5deg) rotateY(-6deg) rotateZ(-1deg);overflow:hidden}
+.mock-grid{height:100%;display:grid;gap:7px;grid-template-columns:.95fr 2fr 1fr;grid-template-rows:.92fr .78fr .48fr;grid-template-areas:"model view uv" "mat timeline inspector" "issues issues issues"}.panel{min-width:0;min-height:0;border:1px solid rgba(105,154,198,.55);border-radius:9px;background:linear-gradient(180deg,rgba(18,30,45,.9),rgba(9,16,25,.95));box-shadow:0 0 0 1px rgba(255,255,255,.03) inset;padding:9px;overflow:hidden}.panel h3{margin:0 0 3px;font-size:12px;line-height:1.2;color:#fff}.panel p{font-size:10px;line-height:1.45;color:#aebfd0;margin:0}.view{grid-area:view;background:linear-gradient(135deg,rgba(77,122,158,.48),rgba(54,45,81,.46) 62%,rgba(10,17,27,.96))}.model{grid-area:model}.mat{grid-area:mat}.uv{grid-area:uv}.timeline{grid-area:timeline}.inspector{grid-area:inspector}.issues{grid-area:issues}.panel-list{display:grid;gap:5px;margin-top:8px}.panel-list span{display:block;height:7px;border-radius:999px;background:rgba(150,180,210,.18)}.panel-list span:nth-child(2){width:72%}.panel-list span:nth-child(3){width:54%}
+.section{margin-top:34px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:14px}h2{margin:0;font-size:clamp(24px,3vw,34px);line-height:1.2}.section-head p{max-width:46em;margin:0;color:var(--muted)}
+.grid{display:grid;gap:14px}.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(17,29,43,.95),rgba(10,18,28,.96));box-shadow:0 12px 34px rgba(0,0,0,.23);padding:18px}.card h3{margin:0 0 8px;font-size:18px;line-height:1.3}.card p{font-size:14px;color:#c6d5e4}.step{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start}.num{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:#17314b;border:1px solid #4d7291;font-weight:900;color:#fff}ul.clean{padding-left:1.1rem;margin:.55rem 0 0;color:#cbd8e6}ul.clean li{margin:.2rem 0}
+.screen-guide{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch}.guide-map{border:1px solid var(--line);border-radius:20px;background:#0a1420;padding:12px}.guide-grid{height:100%;min-height:280px;display:grid;gap:7px;grid-template-columns:1fr 2.2fr 1.05fr 1.18fr;grid-template-rows:1.15fr .85fr .55fr;grid-template-areas:"model view uv inspector" "mat view uv animation" "issues issues issues settings"}.guide-box{border:1px solid #3d5a73;border-radius:8px;background:#111d2b;padding:9px;font-size:12px;color:#eaf4ff;font-weight:800}.guide-box small{display:block;color:#9badbf;font-weight:700;margin-top:2px}.g-model{grid-area:model}.g-view{grid-area:view;background:linear-gradient(135deg,#263d52,#1b1e33)}.g-mat{grid-area:mat}.g-uv{grid-area:uv}.g-inspector{grid-area:inspector}.g-animation{grid-area:animation}.g-issues{grid-area:issues}.g-settings{grid-area:settings}.guide-list{display:grid;gap:10px}.guide-item{padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#0d1825}.guide-item strong{display:block;margin-bottom:2px}.guide-item span{font-size:14px;color:#bdccdc}
+.contact{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px;border:1px solid #3d5871;border-radius:22px;background:linear-gradient(135deg,#122337,#0c1724)}.contact p{margin:0}.contact a{font-size:18px;font-weight:900}.footer{margin-top:28px;color:#74879a;font-size:13px;text-align:center}
+@media (max-width:900px){.hero,.screen-guide{grid-template-columns:1fr}.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.app-mock{transform:none}}
+@media (max-width:560px){.wrap{padding:20px 12px 42px}.hero{padding:20px;border-radius:22px}.mock-wrap{padding:0}.app-mock{border-radius:16px;padding:8px}.mock-grid{gap:5px}.panel{padding:7px}.panel h3{font-size:10px}.panel p{font-size:9px}.guide-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-template-areas:"model view" "mat uv" "animation inspector" "issues issues" "settings settings";min-height:auto}.contact{display:block}.contact a{display:inline-block;margin-top:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="topbar">
+  <div class="logo" aria-label="ModelQA"><div class="logo-mark" aria-hidden="true"></div><div>ModelQA<small>3Dモデル検証ツール</small></div></div>
+  <nav class="nav" aria-label="ページ内メニュー"><a href="#start">使い方</a><a href="#features">できること</a><a href="#screen">画面の見方</a><a href="#contact">問い合わせ</a></nav>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <span class="badge">GLB / glTF / FBX 対応</span>
+    <h1>制作中のモデル確認を、短時間で。</h1>
+    <p class="lead">ModelQAは、3Dモデルを読み込んで「表示確認」「テクスチャ確認」「メッシュ確認」「反射確認」などの確認を制作中にすばやく検証するツールです。</p>
+    <div class="format-row" aria-label="主な確認項目"><span class="pill">表示確認</span><span class="pill">テクスチャ確認</span><span class="pill">メッシュ確認</span><span class="pill">反射確認</span><span class="pill">アニメーション確認</span></div>
+    <div class="actions"><a class="button" href="#start">基本操作を見る</a><a class="button secondary" href="#features">機能を見る</a></div>
+  </div>
+  <div class="mock-wrap" aria-hidden="true"><div class="app-mock"><div class="mock-grid">
+    <div class="panel model"><h3>モデル</h3><p>GLB / glTF / FBX</p><div class="panel-list"><span></span><span></span><span></span></div></div>
+    <div class="panel view"><h3>ビューポート</h3><p>PBR / HDRI / Glass</p></div>
+    <div class="panel uv"><h3>UVビュー</h3><p>Texture / UV</p><div class="panel-list"><span></span><span></span></div></div>
+    <div class="panel mat"><h3>材質</h3><p>BaseColor / Normal</p><div class="panel-list"><span></span><span></span></div></div>
+    <div class="panel timeline"><h3>タイムライン</h3><p>Animation / Skin</p><div class="panel-list"><span></span><span></span></div></div>
+    <div class="panel inspector"><h3>インスペクター</h3><p>Issue詳細 / 修正ヒント</p><div class="panel-list"><span></span><span></span></div></div>
+    <div class="panel issues"><h3>Issue一覧</h3><p>致命的 / エラー / 警告 / 情報</p></div>
+  </div></div></div>
+</section>
+<section id="start" class="section">
+  <div class="section-head"><h2>基本操作</h2><p>モデルを入れて、表示を確認し、問題を拾う。まずはこの流れで確認できます。</p></div>
+  <div class="grid cols-2">
+    <article class="card step"><div class="num">1</div><div><h3>モデルを読み込む</h3><p>GLB、glTF、FBXファイルを画面へドラッグ＆ドロップします。</p></div></article>
+    <article class="card step"><div class="num">2</div><div><h3>ビューポートで確認</h3><p>向き、スケール、欠け、材質、ガラス反射を確認します。</p></div></article>
+    <article class="card step"><div class="num">3</div><div><h3>Issue一覧を見る</h3><p>エラー、警告、情報を一覧で確認します。重大な問題から確認します。</p></div></article>
+    <article class="card step"><div class="num">4</div><div><h3>原因と修正ヒントを確認</h3><p>Issueを選択すると、インスペクターに原因と見直し場所が表示されます。</p></div></article>
+  </div>
+</section>
+<section id="features" class="section">
+  <div class="section-head"><h2>できること</h2><p>アーティスト、プログラマ、学生制作チームが同じ画面で確認しやすい項目に絞っています。</p></div>
+  <div class="grid cols-3">
+    <article class="card"><h3>表示確認</h3><p>モデルの向き、スケール、中心位置、欠け、表示崩れをビューポートで確認できます。</p></article>
+    <article class="card"><h3>テクスチャ確認</h3><p>BaseColor、Normal、Roughness、Metallicなどの割り当て状態を確認できます。</p></article>
+    <article class="card"><h3>メッシュ確認</h3><p>UV、法線、接線、面の状態など、描画トラブルにつながる要素を確認できます。</p></article>
+    <article class="card"><h3>反射確認</h3><p>HDRI環境で金属、粗さ、ガラスの反射を見ながら調整できます。</p></article>
+    <article class="card"><h3>アニメーション確認</h3><p>スキン、ボーン、Animation Clipの再生状態をタイムラインで確認できます。</p></article>
+    <article class="card"><h3>Issue確認</h3><p>問題を重要度別に表示し、該当箇所と修正ヒントを追いやすくします。</p></article>
+  </div>
+</section>
+<section id="screen" class="section">
+  <div class="section-head"><h2>画面の見方</h2><p>各パネルの役割を把握しておくと、確認作業を短時間で進めやすくなります。</p></div>
+  <div class="screen-guide">
+    <div class="guide-map" aria-label="ModelQA画面構成"><div class="guide-grid">
+      <div class="guide-box g-model">モデル<small>読み込み情報</small></div><div class="guide-box g-view">ビューポート<small>表示 / PBR / 反射</small></div><div class="guide-box g-uv">UVビュー<small>UV / Texture</small></div><div class="guide-box g-inspector">インスペクター<small>Issue詳細</small></div><div class="guide-box g-mat">材質<small>Texture / Material</small></div><div class="guide-box g-animation">アニメーション<small>Clip / Skin</small></div><div class="guide-box g-issues">Issue一覧<small>エラー / 警告 / 情報</small></div><div class="guide-box g-settings">表示設定<small>確認モード</small></div>
+    </div></div>
+    <div class="guide-list"><div class="guide-item"><strong>ビューポート</strong><span>モデル本体、PBR材質、HDRI反射、ガラスの見え方を確認します。</span></div><div class="guide-item"><strong>UVビュー</strong><span>テクスチャの貼られ方やUVの破綻を確認します。</span></div><div class="guide-item"><strong>インスペクター</strong><span>選択したIssueの原因、場所、修正ヒントを表示します。</span></div><div class="guide-item"><strong>Issue一覧</strong><span>致命的、エラー、警告、情報を絞り込んで確認します。</span></div></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head"><h2>確認するときの目安</h2><p>読み込めたかどうかだけで終わらず、表示・材質・アニメーションの基本状態を確認してください。</p></div>
+  <div class="grid cols-3"><article class="card"><h3>モデル全体</h3><ul class="clean"><li>位置とスケールが自然か</li><li>一部だけ消えていないか</li><li>裏返りや破綻がないか</li></ul></article><article class="card"><h3>材質と反射</h3><ul class="clean"><li>テクスチャが白飛びしていないか</li><li>Normalの向きが正しいか</li><li>ガラスや金属の反射が自然か</li></ul></article><article class="card"><h3>アニメーション</h3><ul class="clean"><li>ボーンだけ動いていないか</li><li>メッシュが崩れていないか</li><li>Clipの切り替えができるか</li></ul></article></div>
+</section>
+<section id="contact" class="section contact"><div><h2>問題があった場合</h2><p>モデル形式、発生した操作、Issue内容を添えて連絡してください。</p></div><a href="mailto:2250215@ecc.ac.jp">2250215@ecc.ac.jp</a></section>
+</main>
+<div class="footer">ModelQA</div>
+</div>
+</body>
+</html>
