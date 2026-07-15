@@ -1,19 +1,19 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:a43d83a5-64a1-4564-9240-822b1ee17a76",
+    "serialNumber":  "urn:uuid:fff696b1-1f8e-40a4-8724-29920f1a97d3",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-07-15T12:21:01.0784101Z",
+                     "timestamp":  "2026-07-15T15:11:47.2135558Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
-                                       "version":  "1.2.0",
-                                       "purl":  "pkg:generic/modelqa@1.2.0",
+                                       "version":  "1.3.0",
+                                       "purl":  "pkg:generic/modelqa@1.3.0",
                                        "properties":  [
                                                           {
                                                               "name":  "modelqa:sourceCommit",
-                                                              "value":  "c15ee1d16650fd049e8e83e1bd61a5fadc25903e"
+                                                              "value":  "548a2ba78a16b6488f656aedb8412677565ecc48"
                                                           }
                                                       ]
                                    }
@@ -178,7 +178,7 @@
                    ],
     "dependencies":  [
                          {
-                             "ref":  "pkg:generic/modelqa@1.2.0",
+                             "ref":  "pkg:generic/modelqa@1.3.0",
                              "dependsOn":  [
                                                "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
