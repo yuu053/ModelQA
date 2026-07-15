@@ -1,11 +1,550 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>ModelQA 1.3.0</title><style>
-:root{color-scheme:dark;--bg:#10161d;--card:#18232d;--line:#385060;--text:#dce8ee;--muted:#aebfca;--accent:#9ed2ed}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,"Yu Gothic UI",Meiryo,sans-serif}.wrap{max-width:960px;margin:auto;padding:36px 22px 72px}header,section{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:24px;margin-bottom:16px}h1,h2,h3{line-height:1.25;margin:.1em 0 .55em}h1{font-size:2rem}h2{font-size:1.3rem;margin-top:1.2em}p,li{color:var(--muted)}strong,code{color:var(--text)}code,.key{font-family:ui-monospace,Consolas,monospace}.key{display:inline-block;padding:1px 7px;margin:1px;border:1px solid #58768a;border-radius:5px;background:#101a22;color:#e9f5fb;font-weight:700}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#24495d;color:#d6f1ff;font-weight:800}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.grid>div{padding:14px;border:1px solid #304452;border-radius:10px;background:#14202a}a{color:var(--accent)}footer{color:var(--muted);font-size:.9rem}@media print{body{background:#fff;color:#111}.wrap{max-width:none;padding:0}header,section{break-inside:avoid;color:#111;background:#fff}p,li{color:#333}}</style></head>
-<body><main class="wrap"><header><span class="badge">技術合格・未署名Portable</span><h1>ModelQA 1.3.0</h1><p>オフラインで使える Windows 向け3Dモデル検証ツールです。配布物は <strong>ModelQA.exe / ModelQA.pak / README.html</strong> の3項目だけです。</p></header>
-<section><h2>製品バージョンと配布資格</h2><p>バージョンは <strong>1.3.0</strong>、資格ラベルは <strong>技術合格・未署名Portable</strong> です。TechnicalUnsigned は技術検証用であり、公開署名版ではありません。</p><h2>対応環境</h2><p>Windows 10/11 x64、1366×768以上、メモリ8GB以上が最低要件です。GPUはDirectX 12対応のIntel内蔵GPUを最低、NVIDIA GeForce RTX 4050 Laptop GPU以上を推奨します。WARPは診断専用です。</p><h2>対応形式</h2><p>GLB、glTF、FBXを読み込みます。編集内容はglTF/GLBへ書き出せます。FBXは原本を変更せず、GLBまたはglTFとして保存します。</p></section>
-<section><h2>基本操作</h2><div class="grid"><div><h3>読み込み・確認</h3><p>モデルを開き、Viewport、Material/Texture、UV、Mesh、Skin/Animation、Issueを確認します。</p></div><div><h3>保存</h3><p>既定では別名保存を使います。上書き保存は確認後のみ行い、glTF/GLBは同じフォルダーの一時ファイル完成後に原子的に置換します。</p></div></div>
-<h2>キーボードショートカット</h2><p><span class="key">Ctrl+O</span> 開く　<span class="key">Ctrl+R</span> レポート　<span class="key">Ctrl+Shift+L</span> レイアウト初期化　<span class="key">Ctrl+S</span> 上書き保存　<span class="key">Ctrl+Shift+S</span> 別名保存　<span class="key">Esc</span> 読み込み取消　<span class="key">F1</span> ヘルプ　<span class="key">Alt+F4</span> 終了</p><p>読み込み中は保存できません。メニュー、ボタン、ショートカットは同じ可用性判定を使い、表示中の旧モデルを書き換えません。</p></section>
-<section><h2>隔離Import</h2><p>大きい・危険な入力は制限付きWorkerで検査し、失敗や取消時は前に検証済みのモデルを保持します。Workerにネットワーク能力はありません。</p><h2>入力上限</h2><p>Portable既定のファイル、メッシュ、画像、JSON深度、文字列、メモリ上限を超える入力は、完全な読み込み前に拒否します。巨大モデルは軽量Proxyで確認できます。512MBを超えるFBXの初期表示では、形状を最大60万三角形へ縮約し、表示用法線を再生成します。</p><h2>既知の制限</h2><p>巨大FBXのProxyは表示確認用です。元データどおりの法線、Skin、Animation、Texture検査が必要な場合は、制作DCCから軽量化したFBXまたはGLBを書き出してください。FBXの直接上書き、未署名候補の公開配布、WARPによる実GPU資格、対応外形式の完全編集は対象外です。</p></section>
-<section><h2>設定・キャッシュ・ログ・レポート</h2><p>可変データは <code>%LOCALAPPDATA%\ModelQA</code> に保存します。作成不能時は <code>%TEMP%\ModelQA</code> に安全に退避します。配布フォルダーには書き込みません。</p><h2>プライバシーとネットワーク</h2><p>テレメトリ、利用状況送信、自動更新、実行時ネットワーク要求は行いません。すべての検証、ログ、レポートはローカルで処理します。</p></section>
-<section><h2>ライセンスとSBOM</h2><p>第三者通知、依存関係の来歴、CycloneDX SBOMは <code>ModelQA.pak/legal/</code> 内の <code>THIRD_PARTY_NOTICES.md</code>、<code>dependency_provenance.json</code>、<code>component_sbom.cdx.json</code> にあります。</p><h2>署名の確認</h2><p>公開署名版では、エクスプローラーのデジタル署名または <code>Get-AuthenticodeSignature ModelQA.exe</code> で署名者とタイムスタンプを確認してください。TechnicalUnsignedは署名済みと表示しません。</p><h2>サポート</h2><p>モデル、再現手順、ModelQAのバージョン、Issue/レポートを添えて配布元のサポート窓口へ連絡してください。秘密情報や不要な原本を送信しないでください。</p></section>
-<footer>ModelQA 1.3.0 · offline Portable payload · JavaScriptなし · 外部assetなし</footer></main></body></html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>ModelQA 1.3.0 使い方ガイド</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0e151b;
+      --surface: #16222c;
+      --surface-soft: #1b2b36;
+      --line: #365264;
+      --text: #e8f1f5;
+      --muted: #b8c8d1;
+      --accent: #79c9f1;
+      --accent-soft: #183e52;
+      --note: #173c38;
+      --note-line: #4bb9a8;
+      --warning: #49381c;
+      --warning-line: #e0a94a;
+      --shadow: 0 16px 40px rgb(0 0 0 / 24%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 85% 0%, rgb(35 102 132 / 25%), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.75 system-ui, "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -5rem;
+      left: 1rem;
+      z-index: 10;
+      padding: .7rem 1rem;
+      border-radius: .5rem;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 700;
+    }
+
+    .skip-link:focus { top: 1rem; }
+
+    .wrap {
+      width: min(100% - 2rem, 1040px);
+      margin-inline: auto;
+      padding: 2rem 0 4rem;
+    }
+
+    header,
+    section {
+      margin-bottom: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    header { padding: clamp(1.5rem, 5vw, 3.5rem); }
+    section { padding: clamp(1.25rem, 3vw, 2rem); }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0 0 .65em;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    h1 { font-size: clamp(2rem, 6vw, 3.4rem); letter-spacing: -.03em; }
+    h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); }
+    h3 { font-size: 1.08rem; }
+    p { margin: .55rem 0 1rem; color: var(--muted); }
+    ul, ol { margin: .5rem 0 1rem; padding-left: 1.4rem; }
+    li { margin: .35rem 0; color: var(--muted); }
+    strong { color: var(--text); }
+
+    .lead {
+      max-width: 48rem;
+      margin: .8rem 0 1.25rem;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: .8rem;
+      padding: .35rem .75rem;
+      border: 1px solid #4d8aa8;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #d8f3ff;
+      font-size: .88rem;
+      font-weight: 800;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.25rem;
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta li { margin: 0; }
+
+    .steps,
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      min-width: 0;
+      padding: 1rem;
+      border: 1px solid #304b5b;
+      border-radius: .8rem;
+      background: var(--surface-soft);
+    }
+
+    .card p:last-child,
+    .card ul:last-child { margin-bottom: 0; }
+
+    .step-number {
+      display: inline-grid;
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: .7rem;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #09202c;
+      font-weight: 900;
+    }
+
+    .note,
+    .warning {
+      margin: 1rem 0;
+      padding: .9rem 1rem;
+      border-left: .3rem solid;
+      border-radius: .45rem;
+    }
+
+    .note { border-color: var(--note-line); background: var(--note); }
+    .warning { border-color: var(--warning-line); background: var(--warning); }
+    .note p,
+    .warning p { margin: 0; color: var(--text); }
+
+    code,
+    kbd {
+      font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+      font-size: .92em;
+    }
+
+    code {
+      overflow-wrap: anywhere;
+      color: #dcf3ff;
+    }
+
+    kbd {
+      display: inline-block;
+      min-width: 2.1rem;
+      padding: .12rem .45rem;
+      border: 1px solid #658398;
+      border-bottom-width: 2px;
+      border-radius: .35rem;
+      background: #101b23;
+      color: #f3f9fc;
+      text-align: center;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    table {
+      width: 100%;
+      margin: .7rem 0 1rem;
+      border-collapse: collapse;
+      font-size: .96rem;
+    }
+
+    th,
+    td {
+      padding: .65rem .7rem;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: #1c3341; color: var(--text); }
+    td { color: var(--muted); }
+
+    details {
+      margin: .65rem 0;
+      border: 1px solid var(--line);
+      border-radius: .65rem;
+      background: var(--surface-soft);
+    }
+
+    summary {
+      padding: .75rem 1rem;
+      color: var(--text);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    details > div { padding: 0 1rem .85rem; }
+    details p:last-child { margin-bottom: 0; }
+
+    a { color: var(--accent); text-underline-offset: .2em; }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #ffe08a;
+      outline-offset: 3px;
+      border-radius: .25rem;
+    }
+
+    footer {
+      padding: 1rem .4rem 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 1rem, 1040px); padding-top: .5rem; }
+      header, section { border-radius: .75rem; }
+      .steps, .grid, .grid.two { grid-template-columns: 1fr; }
+      table, tbody, tr, th, td { display: block; }
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+      tr { margin-bottom: .75rem; border: 1px solid var(--line); }
+      td { border: 0; border-bottom: 1px solid var(--line); }
+      td:last-child { border-bottom: 0; }
+      td::before { content: attr(data-label); display: block; margin-bottom: .15rem; color: var(--text); font-weight: 750; }
+    }
+
+    @media print {
+      :root { color-scheme: light; }
+      body { background: #fff; color: #111; font-size: 11pt; }
+      .skip-link { display: none; }
+      .wrap { width: 100%; padding: 0; }
+      header, section, .card, details { break-inside: avoid; background: #fff; box-shadow: none; border-color: #999; }
+      header, section { margin-bottom: .6rem; }
+      h1, h2, h3, strong, summary, .note p, .warning p { color: #111; }
+      p, li, td, footer { color: #333; }
+      .badge, th { background: #eee; color: #111; }
+      .note, .warning { background: #f5f5f5; }
+      details > div { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <main class="wrap" id="main">
+    <header>
+      <span class="badge">技術合格・未署名Portable</span>
+      <h1>ModelQA 1.3.0</h1>
+      <p class="lead">オフラインで使える Windows 向け3Dモデル検証ツールです。FBX / glTF / GLBを開き、見た目や材質、UV、Animation、品質Issueをひとつの画面で確認できます。</p>
+      <p>まずはモデルを開いて眺めるだけでも大丈夫です。必要になったところから、マテリアル編集やレポート出力へ進めます。</p>
+      <ul class="meta" aria-label="製品情報">
+        <li><strong>Version</strong> 1.3.0</li>
+        <li><strong>形式</strong> Windows 10 / 11 x64 Portable</li>
+        <li><strong>動作</strong> オフライン</li>
+      </ul>
+      <div class="warning">
+        <p><strong>この配布はTechnicalUnsignedです。</strong> 技術検証に合格した未署名の候補であり、コード署名済みの公開版ではありません。Windowsの警告が出た場合は、入手元とファイルが正しいことを確認してから判断してください。</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="quick-start">
+      <h2 id="quick-start">まずは3ステップ</h2>
+      <div class="steps">
+        <article class="card">
+          <span class="step-number" aria-hidden="true">1</span>
+          <h3>フォルダーを展開</h3>
+          <p>ZIPを受け取った場合は、先に書き込み可能なフォルダーへすべて展開します。ZIPの中から直接起動しないでください。</p>
+        </article>
+        <article class="card">
+          <span class="step-number" aria-hidden="true">2</span>
+          <h3>ModelQAを起動</h3>
+          <p><code>ModelQA.exe</code> をダブルクリックします。<code>ModelQA.pak</code> は同じ場所に置いたままにしてください。</p>
+        </article>
+        <article class="card">
+          <span class="step-number" aria-hidden="true">3</span>
+          <h3>モデルを開く</h3>
+          <p>モデルをウィンドウへドロップするか、<kbd>Ctrl+O</kbd> で選びます。読み込みが終わったら、モデルを回して気になる箇所を確認しましょう。</p>
+        </article>
+      </div>
+      <div class="note">
+        <p><strong>気軽に試せます。</strong> FBXを開いても原本は変更しません。編集結果を残すときはglTFまたはGLBとして書き出します。</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="payload">
+      <h2 id="payload">配布フォルダーの中身</h2>
+      <div class="grid">
+        <article class="card">
+          <h3><code>ModelQA.exe</code></h3>
+          <p>起動するアプリ本体です。</p>
+        </article>
+        <article class="card">
+          <h3><code>ModelQA.pak</code></h3>
+          <p>Shader、HDRI、検証ルール、ライセンス通知などを収めたフォルダーです。</p>
+        </article>
+        <article class="card">
+          <h3><code>README.html</code></h3>
+          <p>いま読んでいる使い方ガイドです。ブラウザーでいつでも開けます。</p>
+        </article>
+      </div>
+      <p>この3項目は同じフォルダーで使います。<code>ModelQA.pak</code> の名前を変えたり、中身だけを移動したりしないでください。</p>
+    </section>
+
+    <section aria-labelledby="environment">
+      <h2 id="environment">対応環境</h2>
+      <table>
+        <thead><tr><th scope="col">項目</th><th scope="col">最低</th><th scope="col">推奨</th></tr></thead>
+        <tbody>
+          <tr><td data-label="項目">OS</td><td data-label="最低">Windows 10 / 11 64-bit</td><td data-label="推奨">Windows 10 / 11 64-bit</td></tr>
+          <tr><td data-label="項目">GPU</td><td data-label="最低">DirectX 12対応のIntel内蔵GPU</td><td data-label="推奨">NVIDIA GeForce RTX 4050 Laptop GPU以上</td></tr>
+          <tr><td data-label="項目">メモリ</td><td data-label="最低">8GB以上</td><td data-label="推奨">16GB以上</td></tr>
+          <tr><td data-label="項目">画面</td><td data-label="最低">1366×768以上</td><td data-label="推奨">1920×1080以上</td></tr>
+        </tbody>
+      </table>
+      <p class="warning"><strong>WARPは診断専用です。</strong> ソフトウェア描画で起動できても、実GPUでの動作確認の代わりにはなりません。</p>
+
+      <h2 id="formats">対応形式</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>読み込み</h3>
+          <p><strong>FBX / glTF / GLB</strong> に対応します。ファイル選択、ドラッグ＆ドロップ、「プログラムから開く」を利用できます。</p>
+        </article>
+        <article class="card">
+          <h3>書き出し</h3>
+          <p><strong>glTF / GLB</strong> に対応します。FBXへは書き戻さず、FBX原本は変更しません。</p>
+        </article>
+      </div>
+      <p>FBXの材質や構造は、glTFへそのまま対応できない場合があります。書き出したモデルは、いちどModelQAで開き直して見た目とIssueを確認してください。</p>
+    </section>
+
+    <section aria-labelledby="workspaces">
+      <h2 id="workspaces">画面とワークスペース</h2>
+      <p>目的に合わせてパネルの並びを切り替えられます。モデルを開いた直後は「モデル確認」から始めるのがおすすめです。切り替えても、保存していないマテリアル編集はそのまま残ります。</p>
+      <table>
+        <thead><tr><th scope="col">ワークスペース</th><th scope="col">向いている作業</th></tr></thead>
+        <tbody>
+          <tr><td data-label="ワークスペース"><strong>モデル</strong></td><td data-label="向いている作業">全体の形、Mesh、法線、Skin、基本情報をひと通り確認します。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>マテリアル</strong></td><td data-label="向いている作業">PBRテクスチャや係数を編集し、3D表示ですぐ確認します。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>UV</strong></td><td data-label="向いている作業">UV0 / UV1の配置、重なり、範囲外を確認します。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>アニメーション</strong></td><td data-label="向いている作業">Animationクリップとタイムラインを確認します。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>Issue QA</strong></td><td data-label="向いている作業">検出されたIssueを重要度別に追い、該当箇所へ移動します。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>カスタム</strong></td><td data-label="向いている作業">自分で調整したウィンドウ配置を保存して使います。</td></tr>
+        </tbody>
+      </table>
+      <p>組み込みワークスペースは <kbd>Ctrl+1</kbd> ～ <kbd>Ctrl+5</kbd>、保存済みのカスタムは <kbd>Ctrl+0</kbd> で切り替えられます。配置に迷ったら <kbd>Ctrl+Shift+L</kbd> で現在のレイアウトを初期位置へ戻せます。</p>
+    </section>
+
+    <section aria-labelledby="model-check">
+      <h2 id="model-check">モデルを確認する</h2>
+      <div class="grid two">
+        <article class="card">
+          <h3>3D表示</h3>
+          <p>回転、移動、ズームを使い、表裏、輪郭、法線、反射を見ます。PBR材質はHDRIの反射も手がかりになります。</p>
+        </article>
+        <article class="card">
+          <h3>構造と品質</h3>
+          <p>Mesh、Texture、Skin、Animationの情報とIssue一覧を確認します。Issueを選ぶと、対象を探しやすくなります。</p>
+        </article>
+      </div>
+      <p>読み込みに失敗した場合や取消した場合は、直前に確認していたモデルを保持します。読み込み中は保存操作が無効になるので、完了表示を待ってください。</p>
+    </section>
+
+    <section aria-labelledby="materials">
+      <h2 id="materials">マテリアルを整える</h2>
+      <p>「マテリアル」ワークスペースでは、次のPBR項目へ画像を選択またはドラッグ＆ドロップで割り当てられます。</p>
+      <ul>
+        <li><strong>Base Color</strong> — 表面の基本色と透明度</li>
+        <li><strong>Normal</strong> — 細かな凹凸の向き</li>
+        <li><strong>Metallic</strong> — 金属らしさ</li>
+        <li><strong>Roughness</strong> — 反射のぼけ具合</li>
+        <li><strong>AO</strong> — 隙間や接触部の陰影</li>
+        <li><strong>Emissive</strong> — 自発光する色と強さ</li>
+      </ul>
+      <p>Base Color、Metallic、Roughness、Normal強度、AO強度、Emissive色・強度を調整できます。各TextureはUV0 / UV1を選べます。</p>
+      <div class="note">
+        <p><strong>Metallic-Roughness自動パック:</strong> MetallicとRoughnessが別画像でも、glTF互換の1枚へ安全にまとめます。RoughnessはGチャンネル、MetallicはBチャンネルへ入ります。</p>
+      </div>
+      <p>編集は非破壊です。<strong>Undo / Redo</strong> で戻したり進めたりでき、プレビューは変更箇所だけを反映します。</p>
+    </section>
+
+    <section aria-labelledby="uv-animation-issue">
+      <h2 id="uv-animation-issue">UV・Animation・Issue QA</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>UV</h3>
+          <p>UV0 / UV1を切り替え、島の配置、重なり、0～1範囲の外側を確認します。大きいMeshでは確認用プレビューを使います。</p>
+        </article>
+        <article class="card">
+          <h3>Animation</h3>
+          <p>クリップを選び、タイムラインを動かして姿勢の変化を確認します。SkinやAnimationのIssueもあわせて見てください。</p>
+        </article>
+        <article class="card">
+          <h3>Issue QA</h3>
+          <p>重要度で絞り込み、内容と修正ヒントを確認します。必要なら <kbd>Ctrl+R</kbd> でレポートを出力し、制作側と共有できます。</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="saving">
+      <h2 id="saving">保存・書き出し・復元</h2>
+      <p>ModelQAには、名前編集を保存する通常のショートカットと、マテリアル編集を書き出す専用ボタンがあります。似ていますが、保存する内容とバックアップの扱いが違います。</p>
+      <div class="grid two">
+        <article class="card">
+          <h3>Node / Bone / Animation名を保存</h3>
+          <p><strong>Ctrl+S / Ctrl+Shift+S はNode / Bone / Animation名の保存です。</strong> <kbd>Ctrl+S</kbd> は現在のglTF / GLBへ名前を上書きします。<strong>通常のCtrl+Sではバックアップを作りません。</strong></p>
+          <p>FBXで <kbd>Ctrl+S</kbd> を使った場合は、原本を変更せず <code>.modelqa.names.json</code> へ名前設定を保存します。<kbd>Ctrl+Shift+S</kbd> は名前を反映したモデルの別名保存で、<strong>FBXからの通常の別名保存はGLBだけです。</strong></p>
+        </article>
+        <article class="card">
+          <h3>編集したマテリアルを書き出す</h3>
+          <p><strong>マテリアル画面の専用ボタン</strong>「GLB/glTFへ別名エクスポート...」は、Textureや係数を含む編集済みマテリアルをglTF / GLBへ書き出します。これは <kbd>Ctrl+S</kbd> / <kbd>Ctrl+Shift+S</kbd> とは別の操作です。</p>
+          <p>「元のglTF/GLBへ上書き」は、確認後に一時出力を検証してから元ファイルを置き換え、<strong>マテリアル上書きではバックアップを作ります。</strong> FBXへは上書きできないため、専用の別名エクスポートを使ってください。</p>
+        </article>
+      </div>
+      <p><strong>自動保存と復元:</strong> マテリアルの編集セッションは自動保存されます。異常終了後は復元候補を確認し、続きから作業できます。書き出したモデルはModelQAで開き直して見た目とIssueを確認すると安心です。</p>
+      <div class="warning">
+        <p>元モデルが外部で更新されている場合、自動保存した編集を黙って適用しません。表示される確認内容を読み、再対応付けまたは破棄を選んでください。</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="large-fbx">
+      <h2 id="large-fbx">巨大なFBXを開くとき</h2>
+      <p><strong>512MBを超えるFBX</strong> は、初期表示を待ち続けないよう、形状を<strong>最大60万三角形</strong>へ縮約した <strong>Proxy Preview</strong> を使います。表示用法線も再生成します。</p>
+      <p>Proxy Previewは、全体形状や向きを早く確認するための軽量表示です。元データどおりの法線、Skin、Animation、Textureを完全に検査するものではありません。</p>
+      <div class="note">
+        <p>完全な確認が必要なら、制作DCCで軽量化したFBXまたはGLBを書き出して開いてください。Proxy表示の結果を最終品質の証明には使わないでください。</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="shortcuts">
+      <h2 id="shortcuts">ショートカット</h2>
+      <table>
+        <thead><tr><th scope="col">キー</th><th scope="col">操作</th></tr></thead>
+        <tbody>
+          <tr><td data-label="キー"><kbd>Ctrl+O</kbd></td><td data-label="操作">モデルを開く</td></tr>
+          <tr><td data-label="キー"><kbd>Ctrl+R</kbd></td><td data-label="操作">レポートを出力</td></tr>
+          <tr><td data-label="キー"><kbd>Ctrl+Shift+L</kbd></td><td data-label="操作">レイアウトを初期位置へ戻す</td></tr>
+          <tr><td data-label="キー"><kbd>Ctrl+S</kbd></td><td data-label="操作">Node / Bone / Animation名を上書き保存（通常はバックアップなし。FBXはsidecarへ保存）</td></tr>
+          <tr><td data-label="キー"><kbd>Ctrl+Shift+S</kbd></td><td data-label="操作">Node / Bone / Animation名を別名保存（FBXからはGLB）</td></tr>
+          <tr><td data-label="キー"><kbd>Ctrl+1</kbd> ～ <kbd>Ctrl+5</kbd></td><td data-label="操作">組み込みワークスペースを切り替える</td></tr>
+          <tr><td data-label="キー"><kbd>Ctrl+0</kbd></td><td data-label="操作">保存済みのカスタムへ切り替える</td></tr>
+          <tr><td data-label="キー"><kbd>Esc</kbd></td><td data-label="操作">進行中の読み込みを取り消す</td></tr>
+          <tr><td data-label="キー"><kbd>F1</kbd></td><td data-label="操作">このガイドを開く</td></tr>
+          <tr><td data-label="キー"><kbd>Alt+F4</kbd></td><td data-label="操作">終了する</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="storage">
+      <h2 id="storage">設定・キャッシュ・ログ・レポートの保存場所</h2>
+      <p>アプリが管理する設定、キャッシュ、ログは、通常 <code>%LOCALAPPDATA%\ModelQA</code> に保存します。そこへ書き込めない場合は <code>%TEMP%\ModelQA</code> へフォールバックします。配布フォルダーへログやキャッシュを書き足しません。</p>
+      <p>ユーザーが出力したレポートは、既定で <code>%USERPROFILE%\Documents\ModelQA\Reports</code> に保存します。問い合わせに添える前に、モデル名やPC名など共有したくない情報がないか確認してください。</p>
+    </section>
+
+    <section aria-labelledby="troubleshooting">
+      <h2 id="troubleshooting">よくある問題</h2>
+      <details>
+        <summary>起動しない、またはModelQA.pakが見つからない</summary>
+        <div><p>ZIPをすべて展開し、<code>ModelQA.exe</code> と <code>ModelQA.pak</code> が同じフォルダーにあるか確認してください。ファイルをひとつずつ別の場所へ移さないでください。</p></div>
+      </details>
+      <details>
+        <summary>Windowsから未署名の警告が出る</summary>
+        <div><p>このTechnicalUnsigned配布はコード署名されていません。入手元、配布者が案内したハッシュ、ファイル名を確認してください。確認できないファイルは実行しないでください。</p></div>
+      </details>
+      <details>
+        <summary>モデルが開かない、読み込みが止まったように見える</summary>
+        <div><p>巨大モデルは検査とProxy生成に時間がかかります。完了表示を待つか、<kbd>Esc</kbd> で取り消してください。繰り返し失敗する場合は、制作DCCから軽量化したFBXまたはGLBを出力して試します。</p></div>
+      </details>
+      <details>
+        <summary>Textureが見つからない、見た目が違う</summary>
+        <div><p>glTFと外部画像を一緒に移動したか、FBXとTextureの参照先が有効かを確認します。UV0 / UV1、Normal強度、Metallic-Roughnessの割り当ても見直してください。</p></div>
+      </details>
+      <details>
+        <summary>画面が狭い、パネル配置が崩れた</summary>
+        <div><p>目的に近いワークスペースへ切り替えるか、<kbd>Ctrl+Shift+L</kbd> で現在のレイアウトを初期位置へ戻してください。</p></div>
+      </details>
+      <details>
+        <summary>保存できない</summary>
+        <div><p>読み込み中でないか、出力先へ書き込めるかを確認してください。Node / Bone / Animation名を別名で残す場合、<strong>FBXの通常の別名保存はGLBです。</strong> 編集したマテリアルを残す場合は <kbd>Ctrl+Shift+S</kbd> ではなく、<strong>マテリアル画面の専用ボタンからglTF / GLBへエクスポートしてください。</strong></p></div>
+      </details>
+    </section>
+
+    <section aria-labelledby="safety">
+      <h2 id="safety">プライバシーと安全性</h2>
+      <ul>
+        <li><strong>テレメトリなし:</strong> 利用状況やモデルを送信しません。</li>
+        <li><strong>自動更新なし:</strong> アプリが勝手に更新ファイルを取得しません。</li>
+        <li><strong>実行時ネットワークなし:</strong> モデル検証、ログ、レポート作成はローカルで完結します。</li>
+        <li><strong>隔離Import:</strong> 大きい入力や信頼できない入力は、制限付きの外部Import Workerで検査します。失敗や取消時は、直前の検証済みモデルを保持します。</li>
+      </ul>
+      <p class="warning"><strong>オフラインでも、入手元の確認は必要です。</strong> TechnicalUnsignedは未署名技術候補です。第三者から受け取った実行ファイルやモデルは、組織のルールに従って扱ってください。</p>
+    </section>
+
+    <section aria-labelledby="licenses">
+      <h2 id="licenses">ライセンスとSBOM</h2>
+      <p>第三者ライブラリの通知、依存関係の来歴、CycloneDX SBOMは <code>ModelQA.pak/legal/</code> に収録しています。</p>
+      <ul>
+        <li><code>THIRD_PARTY_NOTICES.md</code> — 第三者ソフトウェアとライセンス通知</li>
+        <li><code>dependency_provenance.json</code> — 依存関係の取得元と来歴</li>
+        <li><code>component_sbom.cdx.json</code> — CycloneDX形式のSoftware Bill of Materials</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="changes">
+      <h2 id="changes">Ver.1.3.0の変更点</h2>
+      <ul>
+        <li>PBRテクスチャの割り当て、係数調整、Metallic-Roughness自動パックを追加しました。</li>
+        <li>Undo / Redo、自動保存、クラッシュ後の復元、glTF / GLB書き出しを追加しました。</li>
+        <li>モデル、マテリアル、UV、アニメーション、Issue QA、カスタムの6ワークスペースを追加しました。</li>
+        <li>UVプレビューの再利用と、巨大FBXのバックグラウンド処理を改善しました。</li>
+        <li>マテリアルプレビューのDirectX 12安定性と、配布メタデータの確認工程を改善しました。</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="support">
+      <h2 id="support">問い合わせる前に</h2>
+      <p>困ったときは、まず「よくある問題」を確認してください。解決しない場合は、次の情報をそろえて配布元のサポート窓口へ連絡すると状況を追いやすくなります。</p>
+      <ul>
+        <li>ModelQAのバージョン <strong>1.3.0</strong> と資格ラベル <strong>技術合格・未署名Portable</strong></li>
+        <li>Windowsのバージョン、GPU名、メモリ容量</li>
+        <li>行った操作、表示されたメッセージ、再現手順</li>
+        <li>Issue一覧または出力したレポート</li>
+      </ul>
+      <p>モデル原本は、依頼された場合だけ共有してください。機密情報、個人情報、不要なTextureやログは送らないでください。</p>
+    </section>
+
+    <footer>ModelQA 1.3.0 · 技術合格・未署名Portable · 単一HTML / JavaScriptなし / 外部assetなし</footer>
+  </main>
+</body>
+</html>
