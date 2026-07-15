@@ -299,7 +299,7 @@
         </article>
       </div>
       <div class="note">
-        <p><strong>気軽に試せます。</strong> FBXを開いても原本は変更しません。編集結果を残すときはglTFまたはGLBとして書き出します。</p>
+        <p><strong>気軽に試せます。</strong> FBXを開いても原本は変更しません。モデルやマテリアルの編集結果を残すときはglTFまたはGLBとして書き出します。FBXのNode / Bone / Animation名の編集は、原本を変えずに <code>.modelqa.names.json</code> へ保存することもできます。</p>
       </div>
     </section>
 
@@ -440,7 +440,7 @@
 
     <section aria-labelledby="large-fbx">
       <h2 id="large-fbx">巨大なFBXを開くとき</h2>
-      <p><strong>512MBを超えるFBX</strong> は、初期表示を待ち続けないよう、形状を<strong>最大60万三角形</strong>へ縮約した <strong>Proxy Preview</strong> を使います。表示用法線も再生成します。</p>
+      <p><strong>512MBを超えるFBX</strong> は、初期表示を待ち続けないよう、形状を<strong>最大600,000三角形</strong>へ縮約した <strong>Proxy Preview</strong> を使います。表示用法線も再生成します。</p>
       <p>Proxy Previewは、全体形状や向きを早く確認するための軽量表示です。元データどおりの法線、Skin、Animation、Textureを完全に検査するものではありません。</p>
       <div class="note">
         <p>完全な確認が必要なら、制作DCCで軽量化したFBXまたはGLBを書き出して開いてください。Proxy表示の結果を最終品質の証明には使わないでください。</p>
@@ -468,7 +468,7 @@
 
     <section aria-labelledby="storage">
       <h2 id="storage">設定・キャッシュ・ログ・レポートの保存場所</h2>
-      <p>アプリが管理する設定、キャッシュ、ログは、通常 <code>%LOCALAPPDATA%\ModelQA</code> に保存します。そこへ書き込めない場合は <code>%TEMP%\ModelQA</code> へフォールバックします。配布フォルダーへログやキャッシュを書き足しません。</p>
+      <p>アプリが管理する設定、キャッシュ、ログは、通常 <code>%LOCALAPPDATA%\ModelQA</code> をルートとして、その下の <code>settings</code>、<code>cache</code>、<code>logs</code> に保存します。そこへ書き込めない場合は <code>%TEMP%\ModelQA\&lt;現在のユーザーSID&gt;</code> をルートとして、同じサブフォルダーを使います。配布フォルダーへログやキャッシュを書き足しません。</p>
       <p>ユーザーが出力したレポートは、既定で <code>%USERPROFILE%\Documents\ModelQA\Reports</code> に保存します。問い合わせに添える前に、モデル名やPC名など共有したくない情報がないか確認してください。</p>
     </section>
 
