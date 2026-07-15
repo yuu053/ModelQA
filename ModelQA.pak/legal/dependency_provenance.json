@@ -1,0 +1,145 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-07-15T09:35:33.2380914Z",
+    "components":  [
+                       {
+                           "name":  "Assimp",
+                           "version":  "5.4.3",
+                           "purl":  "pkg:github/assimp/assimp@v5.4.3",
+                           "sourceUrl":  "https://github.com/assimp/assimp/archive/refs/tags/v5.4.3.zip",
+                           "sourceRevision":  "v5.4.3",
+                           "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
+                           "licenseExpression":  "BSD-3-Clause",
+                           "vendoredPath":  "external/assimp",
+                           "treeSha256":  "a585e4d247f3cd7fc4df2b813deac6af805a4fc09feef667f222e74a5b76cbb3",
+                           "licensePath":  "external/assimp/LICENSE"
+                       },
+                       {
+                           "name":  "Assimp bundled zlib",
+                           "version":  "5.4.3-bundled",
+                           "purl":  "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
+                           "sourceUrl":  "https://github.com/assimp/assimp/archive/refs/tags/v5.4.3.zip",
+                           "sourceRevision":  "v5.4.3",
+                           "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
+                           "licenseExpression":  "Zlib",
+                           "vendoredPath":  "external/assimp/contrib/zlib",
+                           "treeSha256":  "f4579b430057ef6df6c9edc7d42025581ce3357cfd6482056410c2e2ab90b2d0",
+                           "licensePath":  "external/assimp/contrib/zlib/LICENSE"
+                       },
+                       {
+                           "name":  "Assimp bundled Poly2Tri",
+                           "version":  "5.4.3-bundled",
+                           "purl":  "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/poly2tri",
+                           "sourceUrl":  "https://github.com/assimp/assimp/archive/refs/tags/v5.4.3.zip",
+                           "sourceRevision":  "v5.4.3",
+                           "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
+                           "licenseExpression":  "BSD-3-Clause",
+                           "vendoredPath":  "external/assimp/contrib/poly2tri",
+                           "treeSha256":  "413ce627994cd8fed6ddc5ccdc7bfeea490f6e07b3818d0bc88222f75233492e",
+                           "licensePath":  "external/assimp/contrib/poly2tri/LICENSE"
+                       },
+                       {
+                           "name":  "Dear ImGui",
+                           "version":  "1.92.8",
+                           "purl":  "pkg:github/ocornut/imgui@v1.92.8-docking",
+                           "sourceUrl":  "https://github.com/ocornut/imgui/archive/refs/tags/v1.92.8-docking.zip",
+                           "sourceRevision":  "v1.92.8-docking",
+                           "archiveSha256":  "cb613f0dd1de5f8d9b199142f3122c122e44226c7e4edba758e011e79fafba62",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/imgui",
+                           "treeSha256":  "6dddaa0070822d77e24b49551f440f245fa85c07e70173ffe685809a9ea06198",
+                           "licensePath":  "external/imgui/LICENSE.txt"
+                       },
+                       {
+                           "name":  "TinyGLTF",
+                           "version":  "2.9.3",
+                           "purl":  "pkg:github/syoyo/tinygltf@v2.9.3",
+                           "sourceUrl":  "https://github.com/syoyo/tinygltf/archive/refs/tags/v2.9.3.zip",
+                           "sourceRevision":  "v2.9.3",
+                           "archiveSha256":  "c2a6766ce9c90c580947c7a21b882f5e48e8a41b81f1cba686ff4edfff195db6",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/tinygltf",
+                           "treeSha256":  "c0d9c2e254c08faf3f812f357dcb5a2a5d40538146ed0bf50447abe2e3092f28",
+                           "licensePath":  "external/tinygltf/LICENSE"
+                       },
+                       {
+                           "name":  "im-neo-sequencer ModelQA patched",
+                           "version":  "2024-04-08+modelqa.1",
+                           "purl":  "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1",
+                           "sourceUrl":  "https://github.com/Daandelange/im-neo-sequencer/archive/e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7.zip",
+                           "sourceRevision":  "e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7",
+                           "archiveSha256":  "e6ebd50c7b68cdfa6479f138346d87f3fe7771e0c7175cfbf0a68a40fa49639d",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/im_neo_sequencer",
+                           "treeSha256":  "6b38900c850613dd03c5e038a553bc1256d7ba5aef656c865212537cf993ef62",
+                           "licensePath":  "external/im_neo_sequencer/LICENSE",
+                           "patchProvenance":  {
+                                                   "baseTreeSha256":  "3ca0988f259e5766b94f93325a2ec1b2bc923e4f1f2d2e7fae3e471b345dd6ca",
+                                                   "patchPath":  "config/patches/im-neo-sequencer-modelqa.patch",
+                                                   "patchSha256":  "bb462e4c99d2f8ffbfe9f981635b338afd70cae546f6b7ac0ef52c1139d49a1f",
+                                                   "lineEndingNormalization":  {
+                                                                                   "target":  "LF",
+                                                                                   "paths":  [
+                                                                                                 "LICENSE",
+                                                                                                 "README.md",
+                                                                                                 "imgui_neo_internal.cpp",
+                                                                                                 "imgui_neo_internal.h",
+                                                                                                 "imgui_neo_sequencer.cpp",
+                                                                                                 "imgui_neo_sequencer.h"
+                                                                                             ]
+                                                                               },
+                                                   "files":  [
+                                                                 {
+                                                                     "path":  "LICENSE",
+                                                                     "origin":  "upstream",
+                                                                     "baseSha256":  "099fe2cd456756de3db93278e5fdf3c5fac92cb23dffd6b5e8f31a30ac7e8bb8",
+                                                                     "sha256":  "099fe2cd456756de3db93278e5fdf3c5fac92cb23dffd6b5e8f31a30ac7e8bb8"
+                                                                 },
+                                                                 {
+                                                                     "path":  "README.md",
+                                                                     "origin":  "upstream",
+                                                                     "baseSha256":  "916d2e0e10db399d421af819bf4689bbf99bcbd0d4d31b3eb406714a4a50c8fe",
+                                                                     "sha256":  "916d2e0e10db399d421af819bf4689bbf99bcbd0d4d31b3eb406714a4a50c8fe"
+                                                                 },
+                                                                 {
+                                                                     "path":  "imgui_neo_internal.cpp",
+                                                                     "origin":  "modelqa-patch",
+                                                                     "baseSha256":  "30c92dd2b2d92c9fa2c646ec2bd82751c833d1c93d89d402dfc403ac1ee9929d",
+                                                                     "sha256":  "c8ed95424a7d39c59701ed828f93c98d09ff80fa868556f4efb2e833ba1e40aa"
+                                                                 },
+                                                                 {
+                                                                     "path":  "imgui_neo_internal.h",
+                                                                     "origin":  "upstream",
+                                                                     "baseSha256":  "b743e873fcb992a86b293ea32ee6e5f7ea8081da6b366bb59743d74ee17f228b",
+                                                                     "sha256":  "b743e873fcb992a86b293ea32ee6e5f7ea8081da6b366bb59743d74ee17f228b"
+                                                                 },
+                                                                 {
+                                                                     "path":  "imgui_neo_sequencer.cpp",
+                                                                     "origin":  "upstream",
+                                                                     "baseSha256":  "b7e6c1ba8124f9a8ecd1d006036cf8375b3cdf870d8ce146311f9042c6814c35",
+                                                                     "sha256":  "b7e6c1ba8124f9a8ecd1d006036cf8375b3cdf870d8ce146311f9042c6814c35"
+                                                                 },
+                                                                 {
+                                                                     "path":  "imgui_neo_sequencer.h",
+                                                                     "origin":  "modelqa-patch",
+                                                                     "baseSha256":  "ec90e486b64dbb420e244f706db7f7893f03d6bb38047fb0f7c27a488337c705",
+                                                                     "sha256":  "74cb42988653d49382955b6ea24cceca2d6d4d7f80fbb52e0e59ba0134341e2d"
+                                                                 },
+                                                                 {
+                                                                     "path":  "screenshots/screenshot.png",
+                                                                     "origin":  "upstream",
+                                                                     "baseSha256":  "32d5de1fc248622e828b1277b994c8dd504ef8975bd2c9b39e17c84b22e5d6d5",
+                                                                     "sha256":  "32d5de1fc248622e828b1277b994c8dd504ef8975bd2c9b39e17c84b22e5d6d5"
+                                                                 }
+                                                             ]
+                                               }
+                       }
+                   ],
+    "patchedReconstruction":  {
+                                  "mode":  "metadata-only",
+                                  "verified":  false,
+                                  "offline":  true,
+                                  "requiredForQualification":  true,
+                                  "reason":  "Product build validates the vendored tree and lock only; run the full provenance audit before qualification."
+                              }
+}
