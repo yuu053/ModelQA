@@ -1,10 +1,10 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:7ad0816b-7137-4599-b14a-24fc8b8aa2ff",
+    "serialNumber":  "urn:uuid:a43d83a5-64a1-4564-9240-822b1ee17a76",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-07-15T09:35:34.1768456Z",
+                     "timestamp":  "2026-07-15T12:21:01.0784101Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
@@ -13,7 +13,7 @@
                                        "properties":  [
                                                           {
                                                               "name":  "modelqa:sourceCommit",
-                                                              "value":  "00eafff3f2237de8b66920fe11064855d6e63055"
+                                                              "value":  "c15ee1d16650fd049e8e83e1bd61a5fadc25903e"
                                                           }
                                                       ]
                                    }
@@ -22,12 +22,12 @@
                        {
                            "type":  "library",
                            "name":  "Assimp",
-                           "version":  "5.4.3",
-                           "purl":  "pkg:github/assimp/assimp@v5.4.3",
+                           "version":  "5.4.3+modelqa.1",
+                           "purl":  "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "a585e4d247f3cd7fc4df2b813deac6af805a4fc09feef667f222e74a5b76cbb3"
+                                              "content":  "19ae94efe69ad49e6ea42a10565c4971bb8a5c4acb29e582dde971924b911903"
                                           }
                                       ],
                            "licenses":  [
@@ -180,7 +180,7 @@
                          {
                              "ref":  "pkg:generic/modelqa@1.2.0",
                              "dependsOn":  [
-                                               "pkg:github/assimp/assimp@v5.4.3",
+                                               "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/poly2tri",
                                                "pkg:github/ocornut/imgui@v1.92.8-docking",
@@ -189,7 +189,7 @@
                                            ]
                          },
                          {
-                             "ref":  "pkg:github/assimp/assimp@v5.4.3",
+                             "ref":  "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                              "dependsOn":  [
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/poly2tri"

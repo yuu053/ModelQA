@@ -1,18 +1,23 @@
 {
     "schemaVersion":  1,
-    "generatedAtUtc":  "2026-07-15T09:35:33.2380914Z",
+    "generatedAtUtc":  "2026-07-15T12:21:00.0752860Z",
     "components":  [
                        {
                            "name":  "Assimp",
-                           "version":  "5.4.3",
-                           "purl":  "pkg:github/assimp/assimp@v5.4.3",
+                           "version":  "5.4.3+modelqa.1",
+                           "purl":  "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                            "sourceUrl":  "https://github.com/assimp/assimp/archive/refs/tags/v5.4.3.zip",
                            "sourceRevision":  "v5.4.3",
                            "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
                            "licenseExpression":  "BSD-3-Clause",
                            "vendoredPath":  "external/assimp",
-                           "treeSha256":  "a585e4d247f3cd7fc4df2b813deac6af805a4fc09feef667f222e74a5b76cbb3",
-                           "licensePath":  "external/assimp/LICENSE"
+                           "treeSha256":  "19ae94efe69ad49e6ea42a10565c4971bb8a5c4acb29e582dde971924b911903",
+                           "licensePath":  "external/assimp/LICENSE",
+                           "patchProvenance":  {
+                                                   "baseTreeSha256":  "a585e4d247f3cd7fc4df2b813deac6af805a4fc09feef667f222e74a5b76cbb3",
+                                                   "patchPath":  "config/patches/assimp-modelqa-huge-preview.patch",
+                                                   "patchSha256":  "c0600c977433ba988e2c0428b3fe4231754dbab4ae3c488171bab88d8e880457"
+                                               }
                        },
                        {
                            "name":  "Assimp bundled zlib",
