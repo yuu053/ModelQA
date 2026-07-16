@@ -1,10 +1,10 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:fc6607f5-0319-4bb5-bbf0-d282494d015e",
+    "serialNumber":  "urn:uuid:3b08a4c3-15e0-45b1-96d1-3add4b25383d",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-07-16T18:37:20.5087569Z",
+                     "timestamp":  "2026-07-16T18:58:11.6791693Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
@@ -13,7 +13,7 @@
                                        "properties":  [
                                                           {
                                                               "name":  "modelqa:sourceCommit",
-                                                              "value":  "9a9f23005bd09979ea1355686dff5ce6825ab6dd"
+                                                              "value":  "7b99c8ed293065414d362e2164691d01c4d4b244"
                                                           }
                                                       ]
                                    }
