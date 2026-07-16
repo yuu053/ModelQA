@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "product": "ModelQA",
-  "version": "1.3.0",
-  "sourceCommit": "548a2ba78a16b6488f656aedb8412677565ecc48",
+  "version": "1.4.0",
+  "sourceCommit": "930f59abb23a45479a3b852eb60a6af15f937c33",
   "sourceDirty": false,
   "qualification": "TechnicalUnsigned",
   "workerManifestSchemaVersion": 2,
