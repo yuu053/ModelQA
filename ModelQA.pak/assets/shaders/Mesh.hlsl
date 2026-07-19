@@ -20,7 +20,7 @@ cbuffer SceneConstants : register(b0)
     float4 gEmissiveFactorAndNormalStrength; // xyz: emissive, w: normal strength
     float4 gMaterialParams;                  // x metallic, y roughness, z alphaCutoff, w alphaMode
     float4 gFlags;                           // x base, y normal, z MR, w flipV
-    float4 gFlags2;                          // x 0/off,1/UV0,2/UV1 emissive; y 0/off or 1+AO strength
+    float4 gFlags2;                          // x emissive, y AO, z richPreview, w glassLike
     float4 gCameraExposure;                  // xyz camera, w exposure
     float4 gLightEnv;                        // xyz light dir, w env intensity
     float4 gTextureCoordSets;                // x base, y normal, z MR, w AO
@@ -146,11 +146,11 @@ float4 PSMain(VSOutput input) : SV_Target
 
     float ao = 1.0f;
     if (gFlags2.y > 0.5f)
-        ao = lerp(1.0f, gOcclusionTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.w)).r, saturate(gFlags2.y - 1.0f));
+        ao = lerp(1.0f, gOcclusionTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.w)).r, 0.85f);
 
     float3 emissive = gEmissiveFactorAndNormalStrength.rgb;
     if (gFlags2.x > 0.5f)
-        emissive *= MQA_SRGBToLinear(gEmissiveTexture.Sample(gMaterialSampler, ChooseUv(input, gFlags2.x - 1.0f)).rgb);
+        emissive *= MQA_SRGBToLinear(gEmissiveTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.x)).rgb);
 
     float NdotL = saturate(dot(N, L));
     float NdotV = saturate(dot(N, V));
