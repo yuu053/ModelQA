@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="ja">
 <head>
@@ -316,6 +316,7 @@ summary::marker{color:#78a8c7}
 </article>
 </div>
 <p>FBXの材質や構造は、glTFへそのまま対応できない場合があります。書き出したモデルは、いちどModelQAで開き直して見た目とIssueを確認してください。</p>
+<div class="note"><p><strong>Mesh.Gbxの変換はPortable GUIには含まれません。</strong> 開発者向けに <code>MODEL_QA_BUILD_TOOLS=ON</code> でビルドした <code>ModelQAConvert.exe</code> だけが、静的 <code>CPlugSolid2Model</code> / <code>CPlugVisualIndexedTriangles</code> の限定契約をGLBへ変換できます。同じフォルダーの <code>ModelQAGbxBridge.exe</code> が必要です。Skin、Skeleton、Animation、Morph、任意のGBXクラス、未対応のVisual / Vertex / Materialレイアウトは対象外です。Portable配布物へConverter、bridge、.NET runtimeは追加しません。</p></div>
 </section><section aria-labelledby="workspaces" class="section guide-section">
 <span class="kicker">WORKSPACES</span><h2 id="workspaces">画面とワークスペース</h2>
 <p>目的に合わせてパネルの並びを切り替えられます。モデルを開いた直後は「モデル確認」から始めるのがおすすめです。切り替えても、保存していないマテリアル編集はそのまま残ります。</p>

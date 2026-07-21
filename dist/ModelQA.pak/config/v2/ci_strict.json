@@ -1,9 +1,0 @@
-{
-  "name": "ci_strict",
-  "maxFileSizeBytes": 268435456,
-  "warningFileSizeBytes": 134217728,
-  "failOnUnsupportedFormat": true,
-  "warnOnAsciiFbx": true,
-  "warnOnGbx": true,
-  "requireGlbVersion2": true
-}

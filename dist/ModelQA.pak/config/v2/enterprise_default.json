@@ -1,9 +1,0 @@
-{
-  "name": "enterprise_default",
-  "maxFileSizeBytes": 1073741824,
-  "warningFileSizeBytes": 536870912,
-  "failOnUnsupportedFormat": true,
-  "warnOnAsciiFbx": true,
-  "warnOnGbx": true,
-  "requireGlbVersion2": true
-}

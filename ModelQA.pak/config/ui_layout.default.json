@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "layoutName": "ModelQA Production Layout",
+  "description": "Readiness and fatal/error/warning/FPS metrics are displayed in the command bar.",
   "panels": {
     "left": ["モデル", "マテリアル / テクスチャ", "Issue一覧"],
     "center": ["ビューポート", "タイムライン"],
