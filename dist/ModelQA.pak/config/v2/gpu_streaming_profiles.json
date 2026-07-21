@@ -1,0 +1,35 @@
+{
+  "schema": "modelqa.gpu_streaming_profiles.v1",
+  "profiles": [
+    {
+      "name": "fast_preview",
+      "description": "巨大モデルの初回表示優先。低Mipと少数Uploadでまず表示する。",
+      "enableDedicatedCopyQueue": true,
+      "uploadRingMB": 128,
+      "maxTextureUploadsPerFrame": 4,
+      "maxUploadMBPerFrame": 128,
+      "previewTextureMaxDimension": 1024,
+      "allowFullResolutionUpgrade": false
+    },
+    {
+      "name": "balanced",
+      "description": "通常作業用。Preview後に必要Textureを段階的に上げる。",
+      "enableDedicatedCopyQueue": true,
+      "uploadRingMB": 256,
+      "maxTextureUploadsPerFrame": 8,
+      "maxUploadMBPerFrame": 256,
+      "previewTextureMaxDimension": 2048,
+      "allowFullResolutionUpgrade": true
+    },
+    {
+      "name": "quality_review",
+      "description": "材質・ガラス・反射確認向け。GPUに余裕がある時だけ使う。",
+      "enableDedicatedCopyQueue": true,
+      "uploadRingMB": 512,
+      "maxTextureUploadsPerFrame": 16,
+      "maxUploadMBPerFrame": 512,
+      "previewTextureMaxDimension": 4096,
+      "allowFullResolutionUpgrade": true
+    }
+  ]
+}

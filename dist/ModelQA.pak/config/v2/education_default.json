@@ -1,0 +1,9 @@
+{
+  "name": "education_default",
+  "maxFileSizeBytes": 536870912,
+  "warningFileSizeBytes": 268435456,
+  "failOnUnsupportedFormat": true,
+  "warnOnAsciiFbx": true,
+  "warnOnGbx": true,
+  "requireGlbVersion2": true
+}

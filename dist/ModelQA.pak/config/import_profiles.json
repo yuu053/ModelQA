@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "artist_safe_preview": {
+      "showIssueOverlayOnLoad": false,
+      "showWireframeOnLoad": false,
+      "showSkeletonOnLoad": false,
+      "usePbrPreview": true,
+      "normalMapDefault": false,
+      "glassAssist": true
+    },
+    "technical_full_check": {
+      "showIssueOverlayOnLoad": false,
+      "showWireframeOnLoad": false,
+      "showSkeletonOnLoad": false,
+      "usePbrPreview": true,
+      "normalMapDefault": true,
+      "glassAssist": false
+    }
+  }
+}

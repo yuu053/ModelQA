@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    {
+      "id": "GEOMETRY_INDEX_OUT_OF_RANGE",
+      "severity": "Fatal",
+      "enabled": true
+    },
+    {
+      "id": "GEOMETRY_DEGENERATE_TRIANGLE",
+      "severity": "Warning",
+      "enabled": true
+    },
+    {
+      "id": "TOPOLOGY_NON_MANIFOLD_EDGE",
+      "severity": "Error",
+      "enabled": true
+    },
+    {
+      "id": "NORMAL_ZERO",
+      "severity": "Error",
+      "enabled": true
+    },
+    {
+      "id": "TANGENT_MISSING_WITH_NORMALMAP",
+      "severity": "Error",
+      "enabled": true
+    },
+    {
+      "id": "UV_OUT_OF_RANGE",
+      "severity": "Info",
+      "enabled": true
+    },
+    {
+      "id": "MATERIAL_TEXTURE_SLOT_SUSPECT",
+      "severity": "Warning",
+      "enabled": true
+    },
+    {
+      "id": "TEXTURE_MISSING",
+      "severity": "Error",
+      "enabled": true
+    },
+    {
+      "id": "SKIN_WEIGHT_ZERO",
+      "severity": "Error",
+      "enabled": true
+    },
+    {
+      "id": "ANIMATION_QUATERNION_INVALID",
+      "severity": "Error",
+      "enabled": true
+    }
+  ],
+  "limits": {
+    "maxTextureSize": 8192,
+    "maxBoneInfluencesPerVertex": 4,
+    "maxIssuesStoredPerRule": 5000,
+    "thinTriangleAspectRatio": 100.0,
+    "uvExtremeThreshold": 32.0
+  }
+}

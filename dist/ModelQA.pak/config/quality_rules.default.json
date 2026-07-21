@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "profileName": "ModelQA Default 100 Gate",
+  "description": "100% means no Fatal, Error, Warning, or Info issue remains in the checked category.",
+  "limits": {
+    "maxTextureSize": 8192,
+    "maxJointsPerSkin": 256,
+    "maxInfluencesPerVertex": 4,
+    "maxTrianglesPerPrimitiveWarning": 200000,
+    "thinTriangleAspectWarning": 120.0,
+    "uvExtremeRangeWarning": 32.0,
+    "normalLengthTolerance": 0.15,
+    "skinWeightTolerance": 0.05
+  },
+  "materialRules": {
+    "requireTangentForNormalMap": true,
+    "warnOpaqueBaseColorAlpha": true,
+    "warnBlendWithoutAlpha": true,
+    "warnTextureSlotSuspicion": true,
+    "normalMapFlatPixelRatioWarning": 0.98
+  },
+  "report": {
+    "htmlSortable": true,
+    "includeFixHints": true,
+    "includeTechnicalCodes": true
+  }
+}

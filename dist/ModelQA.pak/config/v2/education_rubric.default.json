@@ -1,0 +1,20 @@
+{
+  "name": "education_default",
+  "version": 2,
+  "total": 100,
+  "fatalPenalty": 100,
+  "errorPenalty": 18,
+  "warningPenalty": 5,
+  "infoPenalty": 0,
+  "hugeFilePenalty": 10,
+  "requireRenderableModel": true,
+  "failIfNoMaterial": false,
+  "failIfNoAnimation": false,
+  "categories": {
+    "geometry": { "points": 20 },
+    "uv": { "points": 20 },
+    "material": { "points": 20 },
+    "animation": { "points": 20 },
+    "optimization": { "points": 20 }
+  }
+}
