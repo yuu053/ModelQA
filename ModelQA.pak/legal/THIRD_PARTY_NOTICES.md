@@ -199,13 +199,28 @@ SOFTWARE.
 ```
 
 
-## Ferndale Studio 04 HDRI / Poly Haven
+## MikkTSpace (ModelQA patched)
 
-- Asset: Ferndale Studio 04 HDRI
-- Source: Poly Haven
-- Authors listed by Poly Haven: Dimitrios Savva, Jarod Guest
-- License: CC0
-- Source path in this source package: `assets/source_hdri/ferndale_studio_04_4k.exr`
-- Runtime path in this source package: `assets/hdris/ferndale_studio_04_4k.mqahdri`
+- Upstream revision: `3e895b49d05ea07e4c2133156cfa94369e19e409`
+- License: Zlib; original notice retained in `external/mikktspace/mikktspace.h` and `.c`.
+- ModelQA local changes add work, scratch, cancellation and recursion hooks and define zero-bit rotation without undefined shifts. Source patch is recorded in the dependency lock.
 
-Poly Haven states that its assets are licensed as CC0 and may be used for commercial work, redistributed, and included in a product that is sold. Attribution is not required, but this notice is kept so customers can identify the bundled public-domain HDRI. Do not claim to be the original author of the HDRI.
+```text
+Copyright (C) 2011 by Morten S. Mikkelsen
+
+ This software is provided 'as-is', without any express or implied
+ warranty.  In no event will the authors be held liable for any damages
+ arising from the use of this software.
+
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+
+ 1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
+```

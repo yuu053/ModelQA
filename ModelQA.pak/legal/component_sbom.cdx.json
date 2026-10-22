@@ -1,19 +1,19 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:732a2750-efe8-4ce8-ad60-bf39bcb5c25a",
+    "serialNumber":  "urn:uuid:486bc4a2-c9d9-43de-bdaf-f79430c24c51",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-07-21T09:51:02.2152358Z",
+                     "timestamp":  "2026-10-22T03:35:53.4827815Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
-                                       "version":  "1.5.0",
-                                       "purl":  "pkg:generic/modelqa@1.5.0",
+                                       "version":  "2.0.0",
+                                       "purl":  "pkg:generic/modelqa@2.0.0",
                                        "properties":  [
                                                           {
                                                               "name":  "modelqa:sourceCommit",
-                                                              "value":  "dfc30312985c02074721b99f9e5f25052a726883"
+                                                              "value":  "7c5697d4790b4f42db90e2c609f0b2425e9cca45"
                                                           }
                                                       ]
                                    }
@@ -27,9 +27,15 @@
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "19ae94efe69ad49e6ea42a10565c4971bb8a5c4acb29e582dde971924b911903"
+                                              "content":  "39e1fc752a3cac09bf4efffe8b1c9214bcf3e55187184e3c5ccd397576ab9a9d"
                                           }
                                       ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
                            "licenses":  [
                                             {
                                                 "license":  {
@@ -53,9 +59,15 @@
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "f4579b430057ef6df6c9edc7d42025581ce3357cfd6482056410c2e2ab90b2d0"
+                                              "content":  "ef4331f732e97f27e009982838258c6e8f7f5fe491d68ceb932d721733459edb"
                                           }
                                       ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
                            "licenses":  [
                                             {
                                                 "license":  {
@@ -79,9 +91,15 @@
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "413ce627994cd8fed6ddc5ccdc7bfeea490f6e07b3818d0bc88222f75233492e"
+                                              "content":  "5bab0c2021926e2bc7500e68239bde726f9cb4ddc5f68380156226a1cf3ff194"
                                           }
                                       ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
                            "licenses":  [
                                             {
                                                 "license":  {
@@ -105,9 +123,15 @@
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "6dddaa0070822d77e24b49551f440f245fa85c07e70173ffe685809a9ea06198"
+                                              "content":  "3c102944838af94bbd5adb9c6e255d89ab0628a0cd2b56cf1b98b91e5454568c"
                                           }
                                       ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
                            "licenses":  [
                                             {
                                                 "license":  {
@@ -127,13 +151,19 @@
                            "type":  "library",
                            "name":  "TinyGLTF",
                            "version":  "2.9.3",
-                           "purl":  "pkg:github/syoyo/tinygltf@v2.9.3",
+                           "purl":  "pkg:github/syoyo/tinygltf@14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "c0d9c2e254c08faf3f812f357dcb5a2a5d40538146ed0bf50447abe2e3092f28"
+                                              "content":  "508c283d73de31563d6287e5798416d970a165d17f8dac8e28cc45bd3229b8d0"
                                           }
                                       ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
                            "licenses":  [
                                             {
                                                 "license":  {
@@ -144,8 +174,8 @@
                            "externalReferences":  [
                                                       {
                                                           "type":  "distribution",
-                                                          "url":  "https://github.com/syoyo/tinygltf/archive/refs/tags/v2.9.3.zip",
-                                                          "comment":  "revision=v2.9.3; archiveSha256=c2a6766ce9c90c580947c7a21b882f5e48e8a41b81f1cba686ff4edfff195db6"
+                                                          "url":  "https://github.com/syoyo/tinygltf/archive/14ba27113ebd507ebeb7cba8ecaeab8df3921b27.zip",
+                                                          "comment":  "revision=14ba27113ebd507ebeb7cba8ecaeab8df3921b27; archiveSha256=4ec5d7178e386957bd60626c568c760bded9204d40682030480f9347c347dbbb"
                                                       }
                                                   ]
                        },
@@ -157,9 +187,15 @@
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "6b38900c850613dd03c5e038a553bc1256d7ba5aef656c865212537cf993ef62"
+                                              "content":  "58d472c307dc5a73be551d1ed5b5cc9ff6ed1c469508731674dd0380a04b4072"
                                           }
                                       ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
                            "licenses":  [
                                             {
                                                 "license":  {
@@ -174,18 +210,51 @@
                                                           "comment":  "revision=e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7; archiveSha256=e6ebd50c7b68cdfa6479f138346d87f3fe7771e0c7175cfbf0a68a40fa49639d"
                                                       }
                                                   ]
+                       },
+                       {
+                           "type":  "library",
+                           "name":  "MikkTSpace ModelQA patched",
+                           "version":  "1.0+modelqa.1",
+                           "purl":  "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "d2f845fcfd9877409efa73ea75d95555e4f75074d303b9f815333071439fb4ef"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "Zlib"
+                                                            }
+                                            }
+                                        ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://github.com/mmikk/MikkTSpace/archive/3e895b49d05ea07e4c2133156cfa94369e19e409.zip",
+                                                          "comment":  "revision=3e895b49d05ea07e4c2133156cfa94369e19e409; archiveSha256=0fd3d51f10dd521cfb72195c6fc8112fe935a48f7ed86c511f3b2b9ffebea45d"
+                                                      }
+                                                  ]
                        }
                    ],
     "dependencies":  [
                          {
-                             "ref":  "pkg:generic/modelqa@1.5.0",
+                             "ref":  "pkg:generic/modelqa@2.0.0",
                              "dependsOn":  [
                                                "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/poly2tri",
                                                "pkg:github/ocornut/imgui@v1.92.8-docking",
-                                               "pkg:github/syoyo/tinygltf@v2.9.3",
-                                               "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1"
+                                               "pkg:github/syoyo/tinygltf@14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
+                                               "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1",
+                                               "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1"
                                            ]
                          },
                          {
@@ -214,13 +283,19 @@
                                            ]
                          },
                          {
-                             "ref":  "pkg:github/syoyo/tinygltf@v2.9.3",
+                             "ref":  "pkg:github/syoyo/tinygltf@14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
                              "dependsOn":  [
 
                                            ]
                          },
                          {
                              "ref":  "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1",
+                             "dependsOn":  [
+
+                                           ]
+                         },
+                         {
+                             "ref":  "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
                              "dependsOn":  [
 
                                            ]

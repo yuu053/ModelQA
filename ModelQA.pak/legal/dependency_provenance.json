@@ -1,6 +1,7 @@
 {
     "schemaVersion":  1,
-    "generatedAtUtc":  "2026-07-21T09:51:01.7566114Z",
+    "treeDigestAlgorithm":  "sha256-relative-path-ordinal-utf8-lf-v1",
+    "generatedAtUtc":  "2026-10-22T03:35:52.7045878Z",
     "components":  [
                        {
                            "name":  "Assimp",
@@ -11,10 +12,10 @@
                            "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
                            "licenseExpression":  "BSD-3-Clause",
                            "vendoredPath":  "external/assimp",
-                           "treeSha256":  "19ae94efe69ad49e6ea42a10565c4971bb8a5c4acb29e582dde971924b911903",
+                           "treeSha256":  "39e1fc752a3cac09bf4efffe8b1c9214bcf3e55187184e3c5ccd397576ab9a9d",
                            "licensePath":  "external/assimp/LICENSE",
                            "patchProvenance":  {
-                                                   "baseTreeSha256":  "a585e4d247f3cd7fc4df2b813deac6af805a4fc09feef667f222e74a5b76cbb3",
+                                                   "baseTreeSha256":  "a6241f520e6fff068b1096c00e4df17d12797cadb48b2479e48a137b245b14d7",
                                                    "patchPath":  "config/patches/assimp-modelqa-huge-preview.patch",
                                                    "patchSha256":  "c0600c977433ba988e2c0428b3fe4231754dbab4ae3c488171bab88d8e880457"
                                                }
@@ -28,7 +29,7 @@
                            "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
                            "licenseExpression":  "Zlib",
                            "vendoredPath":  "external/assimp/contrib/zlib",
-                           "treeSha256":  "f4579b430057ef6df6c9edc7d42025581ce3357cfd6482056410c2e2ab90b2d0",
+                           "treeSha256":  "ef4331f732e97f27e009982838258c6e8f7f5fe491d68ceb932d721733459edb",
                            "licensePath":  "external/assimp/contrib/zlib/LICENSE"
                        },
                        {
@@ -40,7 +41,7 @@
                            "archiveSha256":  "795c29716f4ac123b403e53b677e9f32a8605c4a7b2d9904bfaae3f4053b506d",
                            "licenseExpression":  "BSD-3-Clause",
                            "vendoredPath":  "external/assimp/contrib/poly2tri",
-                           "treeSha256":  "413ce627994cd8fed6ddc5ccdc7bfeea490f6e07b3818d0bc88222f75233492e",
+                           "treeSha256":  "5bab0c2021926e2bc7500e68239bde726f9cb4ddc5f68380156226a1cf3ff194",
                            "licensePath":  "external/assimp/contrib/poly2tri/LICENSE"
                        },
                        {
@@ -52,19 +53,19 @@
                            "archiveSha256":  "cb613f0dd1de5f8d9b199142f3122c122e44226c7e4edba758e011e79fafba62",
                            "licenseExpression":  "MIT",
                            "vendoredPath":  "external/imgui",
-                           "treeSha256":  "6dddaa0070822d77e24b49551f440f245fa85c07e70173ffe685809a9ea06198",
+                           "treeSha256":  "3c102944838af94bbd5adb9c6e255d89ab0628a0cd2b56cf1b98b91e5454568c",
                            "licensePath":  "external/imgui/LICENSE.txt"
                        },
                        {
                            "name":  "TinyGLTF",
                            "version":  "2.9.3",
-                           "purl":  "pkg:github/syoyo/tinygltf@v2.9.3",
-                           "sourceUrl":  "https://github.com/syoyo/tinygltf/archive/refs/tags/v2.9.3.zip",
-                           "sourceRevision":  "v2.9.3",
-                           "archiveSha256":  "c2a6766ce9c90c580947c7a21b882f5e48e8a41b81f1cba686ff4edfff195db6",
+                           "purl":  "pkg:github/syoyo/tinygltf@14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
+                           "sourceUrl":  "https://github.com/syoyo/tinygltf/archive/14ba27113ebd507ebeb7cba8ecaeab8df3921b27.zip",
+                           "sourceRevision":  "14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
+                           "archiveSha256":  "4ec5d7178e386957bd60626c568c760bded9204d40682030480f9347c347dbbb",
                            "licenseExpression":  "MIT",
                            "vendoredPath":  "external/tinygltf",
-                           "treeSha256":  "c0d9c2e254c08faf3f812f357dcb5a2a5d40538146ed0bf50447abe2e3092f28",
+                           "treeSha256":  "508c283d73de31563d6287e5798416d970a165d17f8dac8e28cc45bd3229b8d0",
                            "licensePath":  "external/tinygltf/LICENSE"
                        },
                        {
@@ -76,10 +77,10 @@
                            "archiveSha256":  "e6ebd50c7b68cdfa6479f138346d87f3fe7771e0c7175cfbf0a68a40fa49639d",
                            "licenseExpression":  "MIT",
                            "vendoredPath":  "external/im_neo_sequencer",
-                           "treeSha256":  "6b38900c850613dd03c5e038a553bc1256d7ba5aef656c865212537cf993ef62",
+                           "treeSha256":  "58d472c307dc5a73be551d1ed5b5cc9ff6ed1c469508731674dd0380a04b4072",
                            "licensePath":  "external/im_neo_sequencer/LICENSE",
                            "patchProvenance":  {
-                                                   "baseTreeSha256":  "3ca0988f259e5766b94f93325a2ec1b2bc923e4f1f2d2e7fae3e471b345dd6ca",
+                                                   "baseTreeSha256":  "2b7868f3b88b9da6b60bad835f176f71e3df2e05db78d296cffd89478a1505b2",
                                                    "patchPath":  "config/patches/im-neo-sequencer-modelqa.patch",
                                                    "patchSha256":  "bb462e4c99d2f8ffbfe9f981635b338afd70cae546f6b7ac0ef52c1139d49a1f",
                                                    "lineEndingNormalization":  {
@@ -137,6 +138,23 @@
                                                                      "sha256":  "32d5de1fc248622e828b1277b994c8dd504ef8975bd2c9b39e17c84b22e5d6d5"
                                                                  }
                                                              ]
+                                               }
+                       },
+                       {
+                           "name":  "MikkTSpace ModelQA patched",
+                           "version":  "1.0+modelqa.1",
+                           "purl":  "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
+                           "sourceUrl":  "https://github.com/mmikk/MikkTSpace/archive/3e895b49d05ea07e4c2133156cfa94369e19e409.zip",
+                           "sourceRevision":  "3e895b49d05ea07e4c2133156cfa94369e19e409",
+                           "archiveSha256":  "0fd3d51f10dd521cfb72195c6fc8112fe935a48f7ed86c511f3b2b9ffebea45d",
+                           "licenseExpression":  "Zlib",
+                           "vendoredPath":  "external/mikktspace",
+                           "treeSha256":  "d2f845fcfd9877409efa73ea75d95555e4f75074d303b9f815333071439fb4ef",
+                           "licensePath":  "external/mikktspace/mikktspace.h",
+                           "patchProvenance":  {
+                                                   "baseTreeSha256":  "a0633b98b85b5366c7f8f1c386ddace739ffee4bfb371c2d5407ffc4747be0f9",
+                                                   "patchPath":  "config/patches/mikktspace-modelqa-budget.patch",
+                                                   "patchSha256":  "dc1404e4fd68e4bc21c6e209267682e8916a55654663ec9d0f9659c6c40d8504"
                                                }
                        }
                    ],

@@ -5,12 +5,16 @@
 //   - 初回起動が遅くならないよう、重い分岐や大きい手続き型環境は避ける。
 #include "ModelQAPreviewEnvironment.hlsli"
 
+#if defined(MODELQA_BINDLESS)
+#include "meshlets/Bindings.hlsli"
+#else
 Texture2D gBaseColorTexture         : register(t0);
 Texture2D gNormalTexture            : register(t1);
 Texture2D gMetallicRoughnessTexture : register(t2);
 Texture2D gEmissiveTexture          : register(t3);
 Texture2D gOcclusionTexture         : register(t4);
 Texture2D gSkyboxTexture            : register(t5);
+#endif
 SamplerState gMaterialSampler       : register(s0);
 
 cbuffer SceneConstants : register(b0)
@@ -72,41 +76,55 @@ float2 ChooseUv(VSOutput input, float texCoord)
 
 float3 SampleEnv(float3 dir, float roughness)
 {
+#if defined(MODELQA_BINDLESS)
+    Texture2D<float4> gSkyboxTexture = ResourceDescriptorHeap[gSkyboxDescriptor];
+#endif
     dir = MQA_SafeNormalize(dir, float3(0.0f, 1.0f, 0.0f));
-    float3 c;
+    float3 result = float3(0.0f, 0.0f, 0.0f);
     if (MQA_HasImageSkyboxPreset(gStyleParams.z))
     {
         const float2 uv = MQA_SkyboxImageUV(dir);
         if (MQA_IsHdriSkyboxPreset(gStyleParams.z))
         {
             const float hdrMip = saturate(roughness) * saturate(roughness) * 12.0f;
-            c = max(gSkyboxTexture.SampleLevel(gMaterialSampler, uv, hdrMip).rgb, 0.0f);
+            result = max(gSkyboxTexture.SampleLevel(gMaterialSampler, uv, hdrMip).rgb, 0.0f);
         }
         else
         {
-            c = MQA_SRGBToLinear(gSkyboxTexture.SampleLevel(gMaterialSampler, uv, 0.0f).rgb);
+            result = MQA_SRGBToLinear(gSkyboxTexture.SampleLevel(gMaterialSampler, uv, 0.0f).rgb);
             // equirect画像にはmipが無い環境もあるため、粗さが高い材質では輝度寄りへ軽くぼかす。
-            float l = MQA_Luminance(c);
-            c = lerp(c, float3(l, l, l), saturate(roughness) * 0.28f);
+            float l = MQA_Luminance(result);
+            result = lerp(result, float3(l, l, l), saturate(roughness) * 0.28f);
         }
-        return c * max(gLightEnv.w, 0.0f);
+        result *= max(gLightEnv.w, 0.0f);
     }
-    return MQA_SampleProceduralEnvironmentRough(dir, roughness, gStyleParams.z, gLightEnv.xyz, max(gLightEnv.w, 0.0f), max(gLightingModes.x, 0.0f), 0.0f, 1.0f, 1.0f);
+    else
+    {
+        result = MQA_SampleProceduralEnvironmentRough(dir, roughness, gStyleParams.z, gLightEnv.xyz, max(gLightEnv.w, 0.0f), max(gLightingModes.x, 0.0f), 0.0f, 1.0f, 1.0f);
+    }
+    return result;
 }
 
 float3 BuildNormal(VSOutput input, float3 N)
 {
-    if (gFlags.y < 0.5f || gEmissiveFactorAndNormalStrength.w <= 0.0001f)
-        return N;
-    float3 T = input.tangent.xyz;
-    if (dot(T, T) < 1.0e-6f)
-        return N;
-    T = MQA_SafeNormalize(T - N * dot(N, T), float3(1.0f, 0.0f, 0.0f));
-    float handedness = (abs(input.tangent.w) > 0.001f) ? input.tangent.w : 1.0f;
-    float3 B = MQA_SafeNormalize(cross(N, T) * handedness, float3(0.0f, 0.0f, 1.0f));
-    float3 nt = gNormalTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.y)).xyz * 2.0f - 1.0f;
-    nt.xy *= saturate(gEmissiveFactorAndNormalStrength.w);
-    return MQA_SafeNormalize(T * nt.x + B * nt.y + N * nt.z, N);
+#if defined(MODELQA_BINDLESS)
+    Texture2D<float4> gNormalTexture = ResourceDescriptorHeap[gNormalDescriptor];
+#endif
+    float3 result = N;
+    if (gFlags.y >= 0.5f && gEmissiveFactorAndNormalStrength.w > 0.0001f)
+    {
+        float3 T = input.tangent.xyz;
+        if (dot(T, T) >= 1.0e-6f)
+        {
+            T = MQA_SafeNormalize(T - N * dot(N, T), float3(1.0f, 0.0f, 0.0f));
+            float handedness = (abs(input.tangent.w) > 0.001f) ? input.tangent.w : 1.0f;
+            float3 B = MQA_SafeNormalize(cross(N, T) * handedness, float3(0.0f, 0.0f, 1.0f));
+            float3 nt = gNormalTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.y)).xyz * 2.0f - 1.0f;
+            nt.xy *= saturate(gEmissiveFactorAndNormalStrength.w);
+            result = MQA_SafeNormalize(T * nt.x + B * nt.y + N * nt.z, N);
+        }
+    }
+    return result;
 }
 
 float3 Fresnel(float cosTheta, float3 f0)
@@ -117,6 +135,12 @@ float3 Fresnel(float cosTheta, float3 f0)
 
 float4 PSMain(VSOutput input) : SV_Target
 {
+#if defined(MODELQA_BINDLESS)
+    Texture2D<float4> gBaseColorTexture = ResourceDescriptorHeap[gBaseColorDescriptor];
+    Texture2D<float4> gMetallicRoughnessTexture = ResourceDescriptorHeap[gMetallicRoughnessDescriptor];
+    Texture2D<float4> gOcclusionTexture = ResourceDescriptorHeap[gOcclusionDescriptor];
+    Texture2D<float4> gEmissiveTexture = ResourceDescriptorHeap[gEmissiveDescriptor];
+#endif
     float4 baseTex = (gFlags.x > 0.5f) ? gBaseColorTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.x)) : float4(1.0f, 1.0f, 1.0f, 1.0f);
     float3 baseColor = MQA_SRGBToLinear(baseTex.rgb) * gBaseColorFactor.rgb * input.color.rgb;
     float alpha = baseTex.a * gBaseColorFactor.a * input.color.a;

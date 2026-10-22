@@ -24,12 +24,34 @@ cbuffer EnvCubeGenConstants : register(b0)
 float3 CubeFaceDirection(uint face, float2 uv)
 {
     // uv: -1..1。D3D TextureCubeとして破綻しにくい向きにしている。
-    if (face == 0) return MQA_SafeNormalize(float3( 1.0f, -uv.y, -uv.x), float3( 1.0f, 0.0f, 0.0f)); // +X
-    if (face == 1) return MQA_SafeNormalize(float3(-1.0f, -uv.y,  uv.x), float3(-1.0f, 0.0f, 0.0f)); // -X
-    if (face == 2) return MQA_SafeNormalize(float3( uv.x,  1.0f,  uv.y), float3( 0.0f, 1.0f, 0.0f)); // +Y
-    if (face == 3) return MQA_SafeNormalize(float3( uv.x, -1.0f, -uv.y), float3( 0.0f,-1.0f, 0.0f)); // -Y
-    if (face == 4) return MQA_SafeNormalize(float3( uv.x, -uv.y,  1.0f), float3( 0.0f, 0.0f, 1.0f)); // +Z
-    return              MQA_SafeNormalize(float3(-uv.x, -uv.y, -1.0f), float3( 0.0f, 0.0f,-1.0f)); // -Z
+    // FXC /Od の古い definite-assignment 解析でも一意になるよう、単一returnにする。
+    float3 direction;
+    float3 fallback;
+    if (face == 0)
+    {
+        direction = float3( 1.0f, -uv.y, -uv.x); fallback = float3( 1.0f, 0.0f, 0.0f); // +X
+    }
+    else if (face == 1)
+    {
+        direction = float3(-1.0f, -uv.y,  uv.x); fallback = float3(-1.0f, 0.0f, 0.0f); // -X
+    }
+    else if (face == 2)
+    {
+        direction = float3( uv.x,  1.0f,  uv.y); fallback = float3( 0.0f, 1.0f, 0.0f); // +Y
+    }
+    else if (face == 3)
+    {
+        direction = float3( uv.x, -1.0f, -uv.y); fallback = float3( 0.0f,-1.0f, 0.0f); // -Y
+    }
+    else if (face == 4)
+    {
+        direction = float3( uv.x, -uv.y,  1.0f); fallback = float3( 0.0f, 0.0f, 1.0f); // +Z
+    }
+    else
+    {
+        direction = float3(-uv.x, -uv.y, -1.0f); fallback = float3( 0.0f, 0.0f,-1.0f); // -Z
+    }
+    return MQA_SafeNormalize(direction, fallback);
 }
 
 [numthreads(8, 8, 1)]

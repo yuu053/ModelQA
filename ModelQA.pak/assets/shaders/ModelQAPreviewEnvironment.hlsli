@@ -45,8 +45,9 @@ bool MQA_HasImageSkyboxPreset(float preset)
 
 bool MQA_IsHdriSkyboxPreset(float preset)
 {
-    // base preset 8 = packaged Ferndale Studio 04 HDRI in ModelQA.mqahdri format.
-    return MQA_HasImageSkyboxPreset(preset) && abs((preset - 100.0f) - 8.0f) < 0.5f;
+    // base presets 8/9 = packaged morning-day/night HDRIs in ModelQA.mqahdri format.
+    const float basePreset = preset - 100.0f;
+    return MQA_HasImageSkyboxPreset(preset) && basePreset >= 7.5f && basePreset <= 9.5f;
 }
 
 float MQA_BaseSkyboxPreset(float preset)
@@ -80,13 +81,16 @@ float MQA_SoftRect(float2 uv, float2 c, float2 halfSize, float soft)
 
 float MQA_FloorGrid(float3 dir, float scale, float width)
 {
-    if (dir.y > -0.035f)
-        return 0.0f;
-    float2 p = dir.xz / max(-dir.y, 0.035f);
-    float2 cell = abs(frac(p * scale) - 0.5f);
-    float lineMask = 1.0f - smoothstep(width, width + 0.018f, min(cell.x, cell.y));
-    float fade = saturate((-dir.y - 0.035f) * 4.0f) * saturate(1.0f - length(p) * 0.030f);
-    return lineMask * fade;
+    float result = 0.0f;
+    if (dir.y <= -0.035f)
+    {
+        float2 p = dir.xz / max(-dir.y, 0.035f);
+        float2 cell = abs(frac(p * scale) - 0.5f);
+        float lineMask = 1.0f - smoothstep(width, width + 0.018f, min(cell.x, cell.y));
+        float fade = saturate((-dir.y - 0.035f) * 4.0f) * saturate(1.0f - length(p) * 0.030f);
+        result = lineMask * fade;
+    }
+    return result;
 }
 
 float3 MQA_ProceduralBase(float preset, float y)
