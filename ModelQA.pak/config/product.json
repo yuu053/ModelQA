@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "product": "ModelQA",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "sourceCommit": "7c5697d4790b4f42db90e2c609f0b2425e9cca45",
-  "sourceDirty": false,
-  "qualification": "Development",
+  "sourceDirty": true,
+  "qualification": "TechnicalUnsigned",
   "workerManifestSchemaVersion": 2,
   "runtimeTelemetry": false,
   "runtimeNetwork": false

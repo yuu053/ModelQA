@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <title>ModelQA2.0 使い方ガイド</title>
+  <title>ModelQA2.1 使い方ガイド</title>
   <style>
     :root {
       color-scheme: dark;
@@ -265,12 +265,12 @@
   <a class="skip-link" href="#main">本文へ移動</a>
   <main class="wrap" id="main">
     <header>
-      <span class="badge">開発検証中・未署名Portable</span>
-      <h1>ModelQA2.0</h1>
+      <span class="badge">技術合格・未署名Portable</span>
+      <h1>ModelQA2.1</h1>
       <p class="lead">オフラインで使える Windows 向け3Dモデル検証ツールです。FBX / glTF / GLBを開き、見た目や材質、UV、Animation、品質Issueをひとつの画面で確認できます。</p>
       <p>まずはモデルを開いて眺めるだけでも大丈夫です。必要になったところから、マテリアル編集やレポート出力へ進めます。</p>
       <ul class="meta" aria-label="製品情報">
-        <li><strong>Version</strong> 2.0.0</li>
+        <li><strong>Version</strong> 2.1.0</li>
         <li><strong>形式</strong> Windows 10 / 11 x64 Portable</li>
         <li><strong>動作</strong> オフライン</li>
       </ul>
@@ -522,13 +522,13 @@
     </section>
 
     <section aria-labelledby="changes">
-      <h2 id="changes">Ver.2.0.0の変更点</h2>
+      <h2 id="changes">Ver.2.1.0の変更点</h2>
       <ul>
-        <li>Deep Analyzeから元属性の測定値、閾値、対象要素、解析カバレッジを確認できます。</li>
-        <li>Geometry / NormalのGPU解析とHeatmapを、CPUの測定結果と照合します。</li>
-        <li>Profile、JSONレポート、CLI、Baseline比較を共通の測定結果へ接続しました。</li>
-        <li>必須検査の未対応や未完了をPASSにせず、キャンセル時も取得済みの根拠を保持します。</li>
-        <li>追加UVなどの対応範囲と、製品の正式な検証状態は、各レポートと検証記録に明示します。</li>
+        <li>Khronos glTF Validatorとufbxによる独立検査を追加しました。保留・未対応・未完了は合格として扱いません。</li>
+        <li>上部のワークスペース切り替えに「環境」を追加し、エクスポート操作をまとめました。</li>
+        <li>Issue一覧の操作部分を小さくし、問題の内容を読みやすくしました。</li>
+        <li>Issueの説明、修正ヒント、HTML / Markdownレポートの診断説明を日本語化しました。</li>
+        <li>UVの警告・エラーを選択すると、問題箇所を色付きワイヤーで強調し、その他の線をアルファ値0.3で表示します。「通常表示に戻す」で元の表示へ戻せます。</li>
       </ul>
     </section>
 
@@ -536,7 +536,7 @@
       <h2 id="support">問い合わせる前に</h2>
       <p>困ったときは、まず「よくある問題」を確認してください。解決しない場合は、次の情報をそろえて配布元のサポート窓口へ連絡すると状況を追いやすくなります。</p>
       <ul>
-        <li>ModelQAのバージョン <strong>2.0.0</strong> と資格ラベル <strong>開発検証中・未署名Portable</strong></li>
+        <li>ModelQAのバージョン <strong>2.1.0</strong> と資格ラベル <strong>技術合格・未署名Portable</strong></li>
         <li>Windowsのバージョン、GPU名、メモリ容量</li>
         <li>行った操作、表示されたメッセージ、再現手順</li>
         <li>Issue一覧または出力したレポート</li>
@@ -544,7 +544,7 @@
       <p>モデル原本は、依頼された場合だけ共有してください。機密情報、個人情報、不要なTextureやログは送らないでください。</p>
     </section>
 
-    <footer>ModelQA 2.0.0 · 開発検証中・未署名Portable · 単一HTML / JavaScriptなし / 外部assetなし</footer>
+    <footer>ModelQA 2.1.0 · 技術合格・未署名Portable · 単一HTML / JavaScriptなし / 外部assetなし</footer>
   </main>
 </body>
 </html>

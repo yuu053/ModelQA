@@ -135,6 +135,9 @@ float3 Fresnel(float cosTheta, float3 f0)
 
 float4 PSMain(VSOutput input) : SV_Target
 {
+    // Negative debug-mode value is reserved for the unlit wire pass.
+    // Return before material alpha/vertex colors can change the requested alpha.
+    if (gFlags2.z < -0.5f) return gBaseColorFactor;
 #if defined(MODELQA_BINDLESS)
     Texture2D<float4> gBaseColorTexture = ResourceDescriptorHeap[gBaseColorDescriptor];
     Texture2D<float4> gMetallicRoughnessTexture = ResourceDescriptorHeap[gMetallicRoughnessDescriptor];

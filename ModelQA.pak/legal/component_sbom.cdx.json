@@ -1,15 +1,15 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:486bc4a2-c9d9-43de-bdaf-f79430c24c51",
+    "serialNumber":  "urn:uuid:eeae032c-de2d-4942-999f-77ba719f0e8f",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-10-22T03:35:53.4827815Z",
+                     "timestamp":  "2026-10-22T13:45:35.7670571Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
-                                       "version":  "2.0.0",
-                                       "purl":  "pkg:generic/modelqa@2.0.0",
+                                       "version":  "2.1.0",
+                                       "purl":  "pkg:generic/modelqa@2.1.0",
                                        "properties":  [
                                                           {
                                                               "name":  "modelqa:sourceCommit",
@@ -242,11 +242,75 @@
                                                           "comment":  "revision=3e895b49d05ea07e4c2133156cfa94369e19e409; archiveSha256=0fd3d51f10dd521cfb72195c6fc8112fe935a48f7ed86c511f3b2b9ffebea45d"
                                                       }
                                                   ]
+                       },
+                       {
+                           "type":  "library",
+                           "name":  "ufbx",
+                           "version":  "0.23.1",
+                           "purl":  "pkg:github/ufbx/ufbx@v0.23.1",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "16cfe0196a90f175d765864aa8cf078ecc555ccc55560ca1fd5501a6ab474d57"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "MIT"
+                                                            }
+                                            }
+                                        ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://github.com/ufbx/ufbx/archive/26a482ae66871d7de36eb722aa060bce95bce274.zip",
+                                                          "comment":  "revision=26a482ae66871d7de36eb722aa060bce95bce274; archiveSha256=5e156d06667f26ec915fd2a8ab470cd72dc2dc4e7507ea21454cc8521eae56c2"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "type":  "library",
+                           "name":  "Khronos glTF Validator",
+                           "version":  "2.0.0-dev.3.10",
+                           "purl":  "pkg:github/KhronosGroup/glTF-Validator@2.0.0-dev.3.10",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "b35a56b29f88bea7f1c5533ff43c67faffe92062f3f7951d3a808b40d31e8a25"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "Apache-2.0"
+                                                            }
+                                            }
+                                        ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://github.com/KhronosGroup/glTF-Validator/releases/download/2.0.0-dev.3.10/gltf_validator-2.0.0-dev.3.10-win64.zip",
+                                                          "comment":  "revision=2.0.0-dev.3.10; archiveSha256=c5068f51205deedc28acc3529ee7e11ee60e853454f673093398eba80142202c"
+                                                      }
+                                                  ]
                        }
                    ],
     "dependencies":  [
                          {
-                             "ref":  "pkg:generic/modelqa@2.0.0",
+                             "ref":  "pkg:generic/modelqa@2.1.0",
                              "dependsOn":  [
                                                "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
@@ -254,7 +318,9 @@
                                                "pkg:github/ocornut/imgui@v1.92.8-docking",
                                                "pkg:github/syoyo/tinygltf@14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
                                                "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1",
-                                               "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1"
+                                               "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
+                                               "pkg:github/ufbx/ufbx@v0.23.1",
+                                               "pkg:github/KhronosGroup/glTF-Validator@2.0.0-dev.3.10"
                                            ]
                          },
                          {
@@ -296,6 +362,18 @@
                          },
                          {
                              "ref":  "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
+                             "dependsOn":  [
+
+                                           ]
+                         },
+                         {
+                             "ref":  "pkg:github/ufbx/ufbx@v0.23.1",
+                             "dependsOn":  [
+
+                                           ]
+                         },
+                         {
+                             "ref":  "pkg:github/KhronosGroup/glTF-Validator@2.0.0-dev.3.10",
                              "dependsOn":  [
 
                                            ]

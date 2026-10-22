@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "treeDigestAlgorithm":  "sha256-relative-path-ordinal-utf8-lf-v1",
-    "generatedAtUtc":  "2026-10-22T03:35:52.7045878Z",
+    "generatedAtUtc":  "2026-10-22T13:45:35.2154627Z",
     "components":  [
                        {
                            "name":  "Assimp",
@@ -156,6 +156,31 @@
                                                    "patchPath":  "config/patches/mikktspace-modelqa-budget.patch",
                                                    "patchSha256":  "dc1404e4fd68e4bc21c6e209267682e8916a55654663ec9d0f9659c6c40d8504"
                                                }
+                       },
+                       {
+                           "name":  "ufbx",
+                           "version":  "0.23.1",
+                           "purl":  "pkg:github/ufbx/ufbx@v0.23.1",
+                           "sourceUrl":  "https://github.com/ufbx/ufbx/archive/26a482ae66871d7de36eb722aa060bce95bce274.zip",
+                           "sourceRevision":  "26a482ae66871d7de36eb722aa060bce95bce274",
+                           "archiveSha256":  "5e156d06667f26ec915fd2a8ab470cd72dc2dc4e7507ea21454cc8521eae56c2",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/ufbx",
+                           "licensePath":  "external/ufbx/LICENSE",
+                           "treeSha256":  "16cfe0196a90f175d765864aa8cf078ecc555ccc55560ca1fd5501a6ab474d57"
+                       },
+                       {
+                           "name":  "Khronos glTF Validator",
+                           "version":  "2.0.0-dev.3.10",
+                           "purl":  "pkg:github/KhronosGroup/glTF-Validator@2.0.0-dev.3.10",
+                           "sourceUrl":  "https://github.com/KhronosGroup/glTF-Validator/releases/download/2.0.0-dev.3.10/gltf_validator-2.0.0-dev.3.10-win64.zip",
+                           "sourceRevision":  "2.0.0-dev.3.10",
+                           "archiveSha256":  "c5068f51205deedc28acc3529ee7e11ee60e853454f673093398eba80142202c",
+                           "licenseExpression":  "Apache-2.0",
+                           "vendoredPath":  "tools/gltf-validator",
+                           "licensePath":  "tools/gltf-validator/LICENSE",
+                           "archiveLayout":  "flat",
+                           "treeSha256":  "b35a56b29f88bea7f1c5533ff43c67faffe92062f3f7951d3a808b40d31e8a25"
                        }
                    ],
     "patchedReconstruction":  {
