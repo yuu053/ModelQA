@@ -1,10 +1,10 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:ade1285a-84ba-4e46-bffb-87bb90f8b4b3",
+    "serialNumber":  "urn:uuid:957c8e86-ff4e-4b81-8927-315874ce9677",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-10-22T14:13:48.4744046Z",
+                     "timestamp":  "2026-10-22T15:04:11.7915108Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
