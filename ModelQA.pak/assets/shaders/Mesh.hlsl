@@ -110,19 +110,46 @@ float3 BuildNormal(VSOutput input, float3 N)
 #if defined(MODELQA_BINDLESS)
     Texture2D<float4> gNormalTexture = ResourceDescriptorHeap[gNormalDescriptor];
 #endif
+    const float2 uv = ChooseUv(input, gTextureCoordSets.y);
+    // 接線の有無がピクセル間で異なっても微分を壊さないよう、分岐の外で求める。
+    const float3 positionDx = ddx(input.worldPos);
+    const float3 positionDy = ddy(input.worldPos);
+    const float2 uvDx = ddx(uv);
+    const float2 uvDy = ddy(uv);
     float3 result = N;
     if (gFlags.y >= 0.5f && gEmissiveFactorAndNormalStrength.w > 0.0001f)
     {
         float3 T = input.tangent.xyz;
-        if (dot(T, T) >= 1.0e-6f)
+        float3 B = float3(0.0f, 0.0f, 0.0f);
+        if (dot(T, T) >= 1.0e-6f && gTextureCoordSets.y < 0.5f)
         {
-            T = MQA_SafeNormalize(T - N * dot(N, T), float3(1.0f, 0.0f, 0.0f));
             float handedness = (abs(input.tangent.w) > 0.001f) ? input.tangent.w : 1.0f;
-            float3 B = MQA_SafeNormalize(cross(N, T) * handedness, float3(0.0f, 0.0f, 1.0f));
-            float3 nt = gNormalTexture.Sample(gMaterialSampler, ChooseUv(input, gTextureCoordSets.y)).xyz * 2.0f - 1.0f;
-            nt.xy *= saturate(gEmissiveFactorAndNormalStrength.w);
-            result = MQA_SafeNormalize(T * nt.x + B * nt.y + N * nt.z, N);
+            B = cross(N, T) * handedness * (gFlags.w > 0.5f ? -1.0f : 1.0f);
         }
+        else
+        {
+            // 表示専用の基底。元TANGENTや解析用の属性は生成・変更しない。
+            const float determinant = uvDx.x * uvDy.y - uvDx.y * uvDy.x;
+            const float uvScaleSquared = max(dot(uvDx, uvDx), dot(uvDy, uvDy));
+            if (!(uvScaleSquared > 0.0f) || abs(determinant) <= uvScaleSquared * 1.0e-6f)
+                return N;
+            const float orientation = determinant < 0.0f ? -1.0f : 1.0f;
+            T = (positionDx * uvDy.y - positionDy * uvDx.y) * orientation;
+            B = (positionDy * uvDx.x - positionDx * uvDy.x) * orientation;
+        }
+        if (!all(isfinite(T)) || !all(isfinite(B))) return N;
+        const float tangentScale = max(abs(T.x), max(abs(T.y), abs(T.z)));
+        const float bitangentScale = max(abs(B.x), max(abs(B.y), abs(B.z)));
+        if (!(tangentScale > 0.0f) || !(bitangentScale > 0.0f)) return N;
+        T /= tangentScale;
+        B /= bitangentScale;
+        T -= N * dot(N, T);
+        if (dot(T, T) <= 1.0e-8f) return N;
+        T = normalize(T);
+        B = cross(N, T) * (dot(cross(N, T), B) < 0.0f ? -1.0f : 1.0f);
+        float3 nt = gNormalTexture.SampleGrad(gMaterialSampler, uv, uvDx, uvDy).xyz * 2.0f - 1.0f;
+        nt.xy *= gEmissiveFactorAndNormalStrength.w;
+        result = MQA_SafeNormalize(T * nt.x + B * nt.y + N * nt.z, N);
     }
     return result;
 }
