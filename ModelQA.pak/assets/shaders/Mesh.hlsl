@@ -211,6 +211,17 @@ float4 PSMain(VSOutput input) : SV_Target
     float3 H = MQA_SafeNormalize(L + V, L);
     float NdotH = saturate(dot(N, H));
 
+    // 編集用の表示モデル。保存する標準PBR材質とは独立して比較する。
+    if (gFlags2.z > 1.5f && gFlags2.z < 2.5f)
+        return float4(MQA_LinearToSRGB(baseColor + emissive), alpha);
+    if (gFlags2.z > 2.5f && gFlags2.z < 4.5f)
+    {
+        float3 shaded = baseColor * (0.15f + NdotL * max(gLightingModes.x, 0.0f)) * ao + emissive;
+        if (gFlags2.z > 3.5f)
+            shaded += pow(NdotH, lerp(128.0f, 4.0f, roughness)) * max(gLightingModes.x, 0.0f);
+        return float4(MQA_LinearToSRGB(MQA_TonemapReinhard(shaded * max(gCameraExposure.w, 0.01f))), alpha);
+    }
+
     if (gFlags2.z < 0.5f)
     {
         float shade = 0.18f * max(gLightingModes.w, 0.0f) + NdotL * max(gLightingModes.x, 0.0f);
