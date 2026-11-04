@@ -1,10 +1,10 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:8cea02f1-19d2-4350-9841-1f4f03c1e663",
+    "serialNumber":  "urn:uuid:94fdd63b-18f5-4333-a5c3-b0105003d641",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-11-04T11:55:13.9428186Z",
+                     "timestamp":  "2026-11-04T16:51:23.9433194Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
@@ -277,6 +277,70 @@
                        },
                        {
                            "type":  "library",
+                           "name":  "xatlas",
+                           "version":  "0.0.0+git.f700c77",
+                           "purl":  "pkg:github/jpcy/xatlas@f700c7790aaa030e794b52ba7791a05c085faf0c",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "71b0c5ba5f0ce858898b32b2bf6a48a1ad9239111f94ad2a8bfb21df0caea893"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "MIT"
+                                                            }
+                                            }
+                                        ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://github.com/jpcy/xatlas/archive/f700c7790aaa030e794b52ba7791a05c085faf0c.zip",
+                                                          "comment":  "revision=f700c7790aaa030e794b52ba7791a05c085faf0c; archiveSha256=8a704882e4ba826fc8e78e803197d299dde830cffa6ceee17f0f1bcc76e5c5e1"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "type":  "library",
+                           "name":  "meshoptimizer",
+                           "version":  "1.3",
+                           "purl":  "pkg:github/zeux/meshoptimizer@9e1f07b159d3cb777f1c67ed31fc11fd117986f4",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "ab249ad7eccab46665c6ba49052fd1c2e4654eb228e7a4c0954a0566d9d6820c"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "MIT"
+                                                            }
+                                            }
+                                        ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://github.com/zeux/meshoptimizer/archive/9e1f07b159d3cb777f1c67ed31fc11fd117986f4.zip",
+                                                          "comment":  "revision=9e1f07b159d3cb777f1c67ed31fc11fd117986f4; archiveSha256=0a26e578edbe4c392fdc7c41033d50cde2abbf8f598888b1abef6a6333418f49"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "type":  "library",
                            "name":  "Khronos glTF Validator",
                            "version":  "2.0.0-dev.3.10",
                            "purl":  "pkg:github/KhronosGroup/glTF-Validator@2.0.0-dev.3.10",
@@ -320,6 +384,8 @@
                                                "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1",
                                                "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
                                                "pkg:github/ufbx/ufbx@v0.23.1",
+                                               "pkg:github/jpcy/xatlas@f700c7790aaa030e794b52ba7791a05c085faf0c",
+                                               "pkg:github/zeux/meshoptimizer@9e1f07b159d3cb777f1c67ed31fc11fd117986f4",
                                                "pkg:github/KhronosGroup/glTF-Validator@2.0.0-dev.3.10"
                                            ]
                          },
@@ -368,6 +434,18 @@
                          },
                          {
                              "ref":  "pkg:github/ufbx/ufbx@v0.23.1",
+                             "dependsOn":  [
+
+                                           ]
+                         },
+                         {
+                             "ref":  "pkg:github/jpcy/xatlas@f700c7790aaa030e794b52ba7791a05c085faf0c",
+                             "dependsOn":  [
+
+                                           ]
+                         },
+                         {
+                             "ref":  "pkg:github/zeux/meshoptimizer@9e1f07b159d3cb777f1c67ed31fc11fd117986f4",
                              "dependsOn":  [
 
                                            ]

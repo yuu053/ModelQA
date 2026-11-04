@@ -447,7 +447,7 @@
     <section aria-labelledby="large-fbx">
       <h2 id="large-fbx">巨大なFBXを開くとき</h2>
       <p><strong>512MBを超えるFBX</strong> は、初期表示を待ち続けないよう、形状を<strong>最大600,000三角形</strong>へ縮約した <strong>Proxy Preview</strong> を使います。表示用法線も再生成します。</p>
-      <p>Proxy Previewは、全体形状や向きを早く確認するための軽量表示です。元データどおりの法線、Skin、Animation、Textureを完全に検査するものではありません。</p>
+      <p>Proxy Previewは、全体形状や向きを確認するための軽量表示です。診断はモデルを開いた時点で、隔離Workerが元データを使って精密検証します。サイズや計算量の上限に達した項目は、未完了として表示します。</p>
       <div class="note">
         <p>完全な確認が必要なら、制作DCCで軽量化したFBXまたはGLBを書き出して開いてください。Proxy表示の結果を最終品質の証明には使わないでください。</p>
       </div>

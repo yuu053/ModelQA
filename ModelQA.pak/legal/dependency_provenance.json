@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "treeDigestAlgorithm":  "sha256-relative-path-ordinal-utf8-lf-v1",
-    "generatedAtUtc":  "2026-11-04T11:55:12.1789012Z",
+    "generatedAtUtc":  "2026-11-04T16:51:23.2929279Z",
     "components":  [
                        {
                            "name":  "Assimp",
@@ -168,6 +168,30 @@
                            "vendoredPath":  "external/ufbx",
                            "licensePath":  "external/ufbx/LICENSE",
                            "treeSha256":  "16cfe0196a90f175d765864aa8cf078ecc555ccc55560ca1fd5501a6ab474d57"
+                       },
+                       {
+                           "name":  "xatlas",
+                           "version":  "0.0.0+git.f700c77",
+                           "purl":  "pkg:github/jpcy/xatlas@f700c7790aaa030e794b52ba7791a05c085faf0c",
+                           "sourceUrl":  "https://github.com/jpcy/xatlas/archive/f700c7790aaa030e794b52ba7791a05c085faf0c.zip",
+                           "sourceRevision":  "f700c7790aaa030e794b52ba7791a05c085faf0c",
+                           "archiveSha256":  "8a704882e4ba826fc8e78e803197d299dde830cffa6ceee17f0f1bcc76e5c5e1",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/xatlas",
+                           "licensePath":  "external/xatlas/LICENSE",
+                           "treeSha256":  "71b0c5ba5f0ce858898b32b2bf6a48a1ad9239111f94ad2a8bfb21df0caea893"
+                       },
+                       {
+                           "name":  "meshoptimizer",
+                           "version":  "1.3",
+                           "purl":  "pkg:github/zeux/meshoptimizer@9e1f07b159d3cb777f1c67ed31fc11fd117986f4",
+                           "sourceUrl":  "https://github.com/zeux/meshoptimizer/archive/9e1f07b159d3cb777f1c67ed31fc11fd117986f4.zip",
+                           "sourceRevision":  "9e1f07b159d3cb777f1c67ed31fc11fd117986f4",
+                           "archiveSha256":  "0a26e578edbe4c392fdc7c41033d50cde2abbf8f598888b1abef6a6333418f49",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/meshoptimizer",
+                           "licensePath":  "external/meshoptimizer/LICENSE.md",
+                           "treeSha256":  "ab249ad7eccab46665c6ba49052fd1c2e4654eb228e7a4c0954a0566d9d6820c"
                        },
                        {
                            "name":  "Khronos glTF Validator",
