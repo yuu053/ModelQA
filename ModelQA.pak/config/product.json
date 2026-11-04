@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "product": "ModelQA",
   "version": "2.1.0",
-  "sourceCommit": "f8bdfe07bb36224d4e722920737db1afcf727675",
+  "sourceCommit": "2e5f8e983670ef6f6ef42812523d664408642f3b",
   "sourceDirty": true,
   "qualification": "TechnicalUnsigned",
   "workerManifestSchemaVersion": 2,
