@@ -1,7 +1,7 @@
 {
     "schemaVersion":  1,
     "treeDigestAlgorithm":  "sha256-relative-path-ordinal-utf8-lf-v1",
-    "generatedAtUtc":  "2026-11-06T06:56:06.1015081Z",
+    "generatedAtUtc":  "2026-11-20T13:21:12.9713308Z",
     "components":  [
                        {
                            "name":  "Assimp",
@@ -55,6 +55,18 @@
                            "vendoredPath":  "external/imgui",
                            "treeSha256":  "3c102944838af94bbd5adb9c6e255d89ab0628a0cd2b56cf1b98b91e5454568c",
                            "licensePath":  "external/imgui/LICENSE.txt"
+                       },
+                       {
+                           "name":  "ImGuizmo",
+                           "version":  "1.10",
+                           "purl":  "pkg:github/CedricGuillemet/ImGuizmo@b796ac3b861afc6e91ca74e4611effd9c9527367",
+                           "sourceUrl":  "https://codeload.github.com/CedricGuillemet/ImGuizmo/zip/b796ac3b861afc6e91ca74e4611effd9c9527367",
+                           "sourceRevision":  "b796ac3b861afc6e91ca74e4611effd9c9527367",
+                           "archiveSha256":  "66a506527cec8974f08ddc79368f041abd5ffb9cb81f398261d5fbfb03cfe720",
+                           "licenseExpression":  "MIT",
+                           "vendoredPath":  "external/imguizmo",
+                           "treeSha256":  "d05bbb26fd6fd5d00d48cd9562a2a5bf3d94c1cc948e2013ebc2a893f04b753d",
+                           "licensePath":  "external/imguizmo/LICENSE"
                        },
                        {
                            "name":  "TinyGLTF",
@@ -191,7 +203,7 @@
                            "licenseExpression":  "MIT",
                            "vendoredPath":  "external/meshoptimizer",
                            "licensePath":  "external/meshoptimizer/LICENSE.md",
-                           "treeSha256":  "ab249ad7eccab46665c6ba49052fd1c2e4654eb228e7a4c0954a0566d9d6820c"
+                           "treeSha256":  "8cfc62688663e2777337bdfc4329952eb1b88a1377be4340fc6acf7621190b40"
                        },
                        {
                            "name":  "Khronos glTF Validator",

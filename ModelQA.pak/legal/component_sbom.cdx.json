@@ -1,19 +1,19 @@
 {
     "bomFormat":  "CycloneDX",
     "specVersion":  "1.5",
-    "serialNumber":  "urn:uuid:e2ae813e-f62a-43bb-b27a-f42fb6700e4b",
+    "serialNumber":  "urn:uuid:3fac73d0-3bb1-4fc5-b7e1-33742b474abd",
     "version":  1,
     "metadata":  {
-                     "timestamp":  "2026-11-06T06:56:07.3578687Z",
+                     "timestamp":  "2026-11-20T13:21:13.5871186Z",
                      "component":  {
                                        "type":  "application",
                                        "name":  "ModelQA",
-                                       "version":  "2.1.0",
-                                       "purl":  "pkg:generic/modelqa@2.1.0",
+                                       "version":  "2.2.0",
+                                       "purl":  "pkg:generic/modelqa@2.2.0",
                                        "properties":  [
                                                           {
                                                               "name":  "modelqa:sourceCommit",
-                                                              "value":  "bbab9aca0068213b38599fabdba398f6a0d24779"
+                                                              "value":  "9096194b26d9c099a101bd698b5a92554976b384"
                                                           }
                                                       ]
                                    }
@@ -144,6 +144,38 @@
                                                           "type":  "distribution",
                                                           "url":  "https://github.com/ocornut/imgui/archive/refs/tags/v1.92.8-docking.zip",
                                                           "comment":  "revision=v1.92.8-docking; archiveSha256=cb613f0dd1de5f8d9b199142f3122c122e44226c7e4edba758e011e79fafba62"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "type":  "library",
+                           "name":  "ImGuizmo",
+                           "version":  "1.10",
+                           "purl":  "pkg:github/CedricGuillemet/ImGuizmo@b796ac3b861afc6e91ca74e4611effd9c9527367",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "d05bbb26fd6fd5d00d48cd9562a2a5bf3d94c1cc948e2013ebc2a893f04b753d"
+                                          }
+                                      ],
+                           "properties":  [
+                                              {
+                                                  "name":  "modelqa:treeDigestAlgorithm",
+                                                  "value":  "sha256-relative-path-ordinal-utf8-lf-v1"
+                                              }
+                                          ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "MIT"
+                                                            }
+                                            }
+                                        ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://codeload.github.com/CedricGuillemet/ImGuizmo/zip/b796ac3b861afc6e91ca74e4611effd9c9527367",
+                                                          "comment":  "revision=b796ac3b861afc6e91ca74e4611effd9c9527367; archiveSha256=66a506527cec8974f08ddc79368f041abd5ffb9cb81f398261d5fbfb03cfe720"
                                                       }
                                                   ]
                        },
@@ -315,7 +347,7 @@
                            "hashes":  [
                                           {
                                               "alg":  "SHA-256",
-                                              "content":  "ab249ad7eccab46665c6ba49052fd1c2e4654eb228e7a4c0954a0566d9d6820c"
+                                              "content":  "8cfc62688663e2777337bdfc4329952eb1b88a1377be4340fc6acf7621190b40"
                                           }
                                       ],
                            "properties":  [
@@ -374,12 +406,13 @@
                    ],
     "dependencies":  [
                          {
-                             "ref":  "pkg:generic/modelqa@2.1.0",
+                             "ref":  "pkg:generic/modelqa@2.2.0",
                              "dependsOn":  [
                                                "pkg:github/assimp/assimp@v5.4.3?patch=modelqa.1",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/zlib",
                                                "pkg:github/assimp/assimp@v5.4.3?subpath=contrib/poly2tri",
                                                "pkg:github/ocornut/imgui@v1.92.8-docking",
+                                               "pkg:github/CedricGuillemet/ImGuizmo@b796ac3b861afc6e91ca74e4611effd9c9527367",
                                                "pkg:github/syoyo/tinygltf@14ba27113ebd507ebeb7cba8ecaeab8df3921b27",
                                                "pkg:github/Daandelange/im-neo-sequencer@e7b83bc6d7acd355a2c4c8b0f0bca6e8e84483a7?patch=modelqa.1",
                                                "pkg:github/mmikk/MikkTSpace@3e895b49d05ea07e4c2133156cfa94369e19e409?patch=modelqa.1",
@@ -410,6 +443,12 @@
                          },
                          {
                              "ref":  "pkg:github/ocornut/imgui@v1.92.8-docking",
+                             "dependsOn":  [
+
+                                           ]
+                         },
+                         {
+                             "ref":  "pkg:github/CedricGuillemet/ImGuizmo@b796ac3b861afc6e91ca74e4611effd9c9527367",
                              "dependsOn":  [
 
                                            ]

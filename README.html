@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
-  <title>ModelQA2.1 使い方ガイド</title>
+  <title>ModelQA2.2 使い方ガイド</title>
   <style>
     :root {
       color-scheme: dark;
@@ -265,12 +265,12 @@
   <a class="skip-link" href="#main">本文へ移動</a>
   <main class="wrap" id="main">
     <header>
-      <span class="badge">技術合格・未署名Portable</span>
-      <h1>ModelQA2.1</h1>
+      <span class="badge">開発検証中・未署名Portable</span>
+      <h1>ModelQA2.2</h1>
       <p class="lead">オフラインで使える Windows 向け3Dモデル検証ツールです。FBX / glTF / GLBを開き、見た目や材質、UV、Animation、品質Issueをひとつの画面で確認できます。</p>
       <p>まずはモデルを開いて眺めるだけでも大丈夫です。必要になったところから、マテリアル編集やレポート出力へ進めます。</p>
       <ul class="meta" aria-label="製品情報">
-        <li><strong>Version</strong> 2.1.0</li>
+        <li><strong>Version</strong> 2.2.0</li>
         <li><strong>形式</strong> Windows 10 / 11 x64 Portable</li>
         <li><strong>動作</strong> オフライン</li>
       </ul>
@@ -358,12 +358,14 @@
           <tr><td data-label="ワークスペース"><strong>モデル</strong></td><td data-label="向いている作業">全体の形、Mesh、法線、Skin、基本情報をひと通り確認します。</td></tr>
           <tr><td data-label="ワークスペース"><strong>マテリアル</strong></td><td data-label="向いている作業">PBRテクスチャや係数を編集し、3D表示ですぐ確認します。</td></tr>
           <tr><td data-label="ワークスペース"><strong>UV</strong></td><td data-label="向いている作業">UV0 / UV1の配置、重なり、範囲外を確認します。</td></tr>
-          <tr><td data-label="ワークスペース"><strong>アニメーション</strong></td><td data-label="向いている作業">右側でクリップと対象を探し、下のタイムラインで再生・停止・時間移動を操作します。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>アニメーション</strong></td><td data-label="向いている作業">ボーンを自動表示します。右側でクリップと対象を探し、下のタイムラインで再生・停止・時間移動を操作します。</td></tr>
           <tr><td data-label="ワークスペース"><strong>Issue QA</strong></td><td data-label="向いている作業">検出されたIssueを重要度別に追い、該当箇所へ移動します。</td></tr>
-          <tr><td data-label="ワークスペース"><strong>カスタム</strong></td><td data-label="向いている作業">自分で調整したウィンドウ配置を保存して使います。</td></tr>
+          <tr><td data-label="ワークスペース"><strong>カスタム</strong></td><td data-label="向いている作業">保存したパネル構成を固定レイアウトとして使います。</td></tr>
         </tbody>
       </table>
       <p>組み込みワークスペースは <kbd>Ctrl+1</kbd> ～ <kbd>Ctrl+5</kbd>、保存済みのカスタムは <kbd>Ctrl+0</kbd> で切り替えられます。配置に迷ったら <kbd>Ctrl+Shift+L</kbd> で現在のレイアウトを初期位置へ戻せます。</p>
+      <p>標準・カスタムを含む全ワークスペースで、パネルの位置とサイズを所定の配置に固定します。アプリのウィンドウサイズに合わせてパネルを再配置します。</p>
+      <p>上部の「ワールド設定」で、背景・照明・反射・PBR品質をまとめて調整できます。タイトルバーをドラッグして移動し、外側をクリックすると閉じます。「ファイルを開く」を右クリックすると最近使ったファイルが表示されます。カスタムレイアウトは「表示」から保存できます。</p>
     </section>
 
     <section aria-labelledby="model-check">
@@ -371,13 +373,15 @@
       <div class="grid two">
         <article class="card">
           <h3>3D表示</h3>
-          <p>回転、移動、ズームを使い、表裏、輪郭、法線、反射を見ます。PBR材質はHDRIの反射も手がかりになります。</p>
+          <p>回転、移動、ズームを使い、表裏、輪郭、法線、反射を見ます。ビューポート上で <kbd>Space</kbd> を押すと、単一ビューと透視・上面・正面・側面の4ビューが切り替わります。4ビューではポインターの下のビューが拡大されます。</p>
         </article>
         <article class="card">
           <h3>構造と品質</h3>
           <p>Mesh、Texture、Skin、Animationの情報とIssue一覧を確認します。Issueを選ぶと、対象を探しやすくなります。</p>
         </article>
       </div>
+      <p>ボーンを動かすには、シーン階層またはスケルトン表示でボーンを選んでください。バインド済みのメッシュは、ドラッグ中もウェイトに沿って追従します。<kbd>Q</kbd> / <kbd>W</kbd> / <kbd>E</kbd> / <kbd>R</kbd> は順に選択 / 移動 / 回転 / 拡縮、<kbd>A</kbd> は全体表示、<kbd>F</kbd> は選択箇所へのフォーカスです。<kbd>J</kbd> または <kbd>Ctrl</kbd> を押しながらドラッグするとスナップします。</p>
+      <p>カメラは <kbd>Alt</kbd>＋左ドラッグで回転、中ドラッグでパン、右ドラッグでドリーします。従来の右ドラッグで回転、中ドラッグでパン、ホイールでズームも使えます。<kbd>4</kbd> / <kbd>5</kbd> でワイヤーフレーム / 通常表示、<kbd>Ctrl+Z</kbd> で元に戻し、<kbd>Ctrl+Y</kbd> または <kbd>Ctrl+Shift+Z</kbd> でやり直します。</p>
       <p>読み込みに失敗した場合や取消した場合は、直前に確認していたモデルを保持します。読み込み中は保存操作が無効になるので、完了表示を待ってください。</p>
     </section>
 
@@ -397,8 +401,9 @@
         <p><strong>Metallic-Roughness自動パック:</strong> MetallicとRoughnessが別画像でも、glTF互換の1枚へ安全にまとめます。RoughnessはGチャンネル、MetallicはBチャンネルへ入ります。</p>
       </div>
       <p>編集は非破壊です。<strong>Undo / Redo</strong> で戻したり進めたりでき、プレビューは変更箇所だけを反映します。</p>
-      <p>各PBRマップの表示は「環境 → 品質表示」で個別に切り替えられます。ノーマル用の接線がないモデルでは、UVから表示用の基底を求めます。元データに接線を追加したり、解析結果を変更したりはしません。UVが退化している場所では元の法線を使います。</p>
-      <p>モデル本体が左右の鏡写しになる場合は「環境 → 表示 → モデルの左右反転補正」で比較できます。FBXの変換履歴に合わせて読み込み時に自動設定します。画像だけの上下反転は「品質表示 → テクスチャV反転」です。</p>
+      <p>各PBRマップの表示は「ワールド設定 → PBR品質」で個別に切り替えられます。ノーマル用の接線がないモデルでは、UVから表示用の基底を求めます。UVが退化している場所では元の法線を使います。</p>
+      <p>モデル本体が左右の鏡写しになる場合は「環境 → 表示 → モデルの左右反転補正」で比較できます。FBXの変換履歴に合わせて読み込み時に自動設定します。画像だけの上下反転は「ワールド設定 → PBR品質 → テクスチャV反転」です。</p>
+      <p>HDRI背景を表示すると朝・昼または夜の環境が反射に映ります。黒背景では表示中のグリッドが映り、HDRIの拡散照明を使います。</p>
       <p>Workerや縮小Proxyを使う場合も座標変換履歴を保持します。旧形式の内部キャッシュは自動で作り直します。</p>
     </section>
 
@@ -465,6 +470,8 @@
           <tr><td data-label="キー"><kbd>Ctrl+Shift+S</kbd></td><td data-label="操作">Node / Bone / Animation名を別名保存（FBXからはGLB）</td></tr>
           <tr><td data-label="キー"><kbd>Ctrl+1</kbd> ～ <kbd>Ctrl+5</kbd></td><td data-label="操作">組み込みワークスペースを切り替える</td></tr>
           <tr><td data-label="キー"><kbd>Ctrl+0</kbd></td><td data-label="操作">保存済みのカスタムへ切り替える</td></tr>
+          <tr><td data-label="キー"><kbd>Space</kbd></td><td data-label="操作">単一ビューと4ビューを切り替える（ビューポート上）</td></tr>
+          <tr><td data-label="キー"><kbd>Shift+Space</kbd></td><td data-label="操作">アニメーションを再生・停止する（ビューポート上）</td></tr>
           <tr><td data-label="キー"><kbd>Esc</kbd></td><td data-label="操作">進行中の読み込みを取り消す</td></tr>
           <tr><td data-label="キー"><kbd>F1</kbd></td><td data-label="操作">このガイドを開く</td></tr>
           <tr><td data-label="キー"><kbd>Alt+F4</kbd></td><td data-label="操作">終了する</td></tr>
@@ -528,16 +535,14 @@
     </section>
 
     <section aria-labelledby="changes">
-      <h2 id="changes">Ver.2.1.0の変更点</h2>
+      <h2 id="changes">Ver.2.2.0の変更点</h2>
       <ul>
-        <li>Khronos glTF Validatorとufbxによる独立検査を追加しました。保留・未対応・未完了は合格として扱いません。</li>
-        <li>上部のワークスペース切り替えに「環境」を追加し、エクスポート操作をまとめました。</li>
-        <li>Issue一覧の操作部分を小さくし、問題の内容を読みやすくしました。</li>
-        <li>アニメーションのタイムラインを一つにまとめ、クリップ・ノードの検索選択を追加しました。画面外のトラックや重なるキーマーカーの描画を減らし、キー選択だけで毎フレームGPU同期する処理を解消しました。</li>
-        <li>Issueの説明、修正ヒント、HTML / Markdownレポートの診断説明に加え、解析パネルの測定項目・単位・実行状態・操作説明を日本語化しました。</li>
-        <li>上部の「表示」メニューから、通常表示、ワイヤーフレーム、重ね表示を切り替えられます。法線やUVなどの問題箇所の強調は、表示を切り替えても維持されます。「Issueの強調を解除」で終了できます。</li>
-        <li>FBXの左右反転とノーマル・PBR画像の表示、材質Undo/Redo・自動保存・書き出し、変換時の既存ファイル保護、アニメーション編集と変形前の姿勢への復帰を修正しました。</li>
-        <li>編集直後のモデル切り替え・終了時の保存、GPU再初期化後の材質・環境画像の復帰、UV確認からの再生を修正しました。画像欠落を含む書き出しは理由を表示して停止します。</li>
+        <li>ボーンの移動・回転・拡縮をドラッグ中からメッシュに反映し、選択・カメラ・スナップ・Undo / Redo のショートカットを追加しました。</li>
+        <li>ボーンのない Y 上向きの T ポーズ人型に、ボーンとスキンウェイトを自動生成できます。</li>
+        <li>対応する人型リグの手首・肘・足首・膝を <kbd>W</kbd> で動かすと、腕や脚が追従します。腰を下げると足を支点に膝が曲がります。クリップを選んだ状態で操作すると現在のフレームにキーが入ります。</li>
+        <li>同じモデルのクリップを2画面で比較できます。アニメーション画面のタイムラインを全幅に広げ、クリップやキーの作成・編集に対応しました。</li>
+        <li>GGX ベースの PBR とスキニング時の法線変換を改善しました。</li>
+        <li>アクセサリーの複製・取り付け先の変更を追加し、既存の出力先を選んだ場合のバックアップ付き保存を修正しました。</li>
       </ul>
     </section>
 
@@ -545,7 +550,7 @@
       <h2 id="support">問い合わせる前に</h2>
       <p>困ったときは、まず「よくある問題」を確認してください。解決しない場合は、次の情報をそろえて配布元のサポート窓口へ連絡すると状況を追いやすくなります。</p>
       <ul>
-        <li>ModelQAのバージョン <strong>2.1.0</strong> と資格ラベル <strong>技術合格・未署名Portable</strong></li>
+        <li>ModelQAのバージョン <strong>2.2.0</strong> と資格ラベル <strong>開発検証中・未署名Portable</strong></li>
         <li>Windowsのバージョン、GPU名、メモリ容量</li>
         <li>行った操作、表示されたメッセージ、再現手順</li>
         <li>Issue一覧または出力したレポート</li>
@@ -553,7 +558,7 @@
       <p>モデル原本は、依頼された場合だけ共有してください。機密情報、個人情報、不要なTextureやログは送らないでください。</p>
     </section>
 
-    <footer>ModelQA 2.1.0 · 技術合格・未署名Portable · 単一HTML / JavaScriptなし / 外部assetなし</footer>
+    <footer>ModelQA 2.2.0 · 開発検証中・未署名Portable · 単一HTML / JavaScriptなし / 外部assetなし</footer>
   </main>
 </body>
 </html>
